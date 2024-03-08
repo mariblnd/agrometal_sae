@@ -7,21 +7,21 @@ controllers:
 
 home:
     path: /
-    controller : 'App\Controller'
+    controller : 'App\Controller\AgrometalController::homepageController'
 
 equipment:
     path: /equipment
-    controller: 'App\Controller'
+    controller : 'App\Controller\AgrometalController::equipementsController'
 
 references:
     path: /references
-    controller: 'App\Controller'
+    controller : 'App\Controller\AgrometalController::referencesController'
 
 contacts:
     path: /contacts
-    controller: 'App\Controller'
+    controller : 'App\Controller\AgrometalController::homepageController'
 
 adminpanel:
     path: /adminpanel
-    controller: 'App\Controller'
+    controller : 'App\Controller\AgrometalController::adminpanelController'
 

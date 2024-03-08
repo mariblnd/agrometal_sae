@@ -7,13 +7,22 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AgrometalController extends AbstractController
 {
-    public function homepageController(){}
+    public function homepageController(){
+        return $this->render('homepage.html.twig');
+    }
 
-    public function referencesController(){}
+    public function referencesController(){
+        return $this->render('references.html.twig');
 
-    public function equipementsController(){}
+    }
 
-    public function adminpanelController(){}
+    public function equipementsController(){
+        return $this->render('equipements.html.twig');
+    }
+
+    public function adminpanelController(){
+        return $this->render('adminpanel.html.twig');
+    }
 
 
 }
