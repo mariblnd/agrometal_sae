@@ -1,0 +1,26 @@
+{
+    "adress_title": "Agrometál Klaster kft.",
+    "adress": "Hunyadi János út 3 H-1117 Budapest",
+    "telephone": "+36 (1) 204 90 90",
+    "email": "business@agrometalfoodtech.eu",
+    "social_media": [
+        {
+            "title": "Instagram",
+            "link": "#",
+            "image": "instagram.svg",
+            "active": false
+        },
+        {
+            "title": "Facebook",
+            "link": "#",
+            "image": "facebook.svg",
+            "active": false
+        },
+        {
+            "title": "LinkedIn",
+            "link": "#",
+            "image": "linkedin.svg",
+            "active": false
+        }
+    ]
+}

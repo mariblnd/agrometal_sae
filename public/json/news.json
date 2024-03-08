@@ -1,0 +1,25 @@
+{
+    "title": "Salon du Brasseur à Nancy, FR",
+    "date": "20 - 21 octobre 2023",
+    "description": "En 2023, Agrometal a participé à l'exposition annuelle Salon du Brasseur à Nancy. Il est devenu, au fil des années, le rendez-vous pour les 1300 brasseurs français chaque année.",
+    "chiffres": [
+        {
+            "ID": 1,
+            "number": "177",
+            "title": "exposants dans<br>le salon",
+            "active": true
+        },
+        {
+            "ID": 2,
+            "number": "24e",
+            "title": "édition<br>d'exposition",
+            "active": true
+        },
+        {
+            "ID": 3,
+            "number": "5500",
+            "title": "m² d'espace<br>d'exposition",
+            "active": true
+        }
+    ]
+}

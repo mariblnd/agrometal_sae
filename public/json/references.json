@@ -1,0 +1,107 @@
+[
+    {
+        "id": 0,
+        "title": "alaryk",
+        "company_name": "Brasserie Alaryk",
+        "description": "Une commune française située à proximité de la mer. Il pourrait s'agir de la plus ancienne ville de France",
+        "logo": "alaryk.png",
+        "creation_date": "01/01/1970",
+        "partner_from": "01/01/1970",
+        "website": "alaryk.fr",
+        "social_media": [
+            {
+                "title": "Instagram",
+                "link": "#",
+                "image": "instagram",
+                "active": true
+            },
+            {
+                "title": "Facebook",
+                "link": "#",
+                "image": "facebook",
+                "active": true
+            },
+            {
+                "title": "LinkedIn",
+                "link": "#",
+                "image": "linkedin",
+                "active": true
+            }
+        ],
+        "map_point": {
+            "margin_top": 425,
+            "margin_left": 300,
+            "region": "occitaine"
+        }
+    },
+    {
+        "id": 1,
+        "title": "alaryk2",
+        "company_name": "Brasserie Alaryk2",
+        "description": "Une commune française située à proximité de la mer. Il pourrait s'agir de la plus ancienne ville de France",
+        "logo": "alaryk.png",
+        "creation_date": "01/01/1970",
+        "partner_from": "01/01/1970",
+        "website": "alaryk.fr",
+        "social_media": [
+            {
+                "title": "Instagram",
+                "link": "#",
+                "image": "instagram",
+                "active": false
+            },
+            {
+                "title": "Facebook",
+                "link": "#",
+                "image": "facebook",
+                "active": false
+            },
+            {
+                "title": "LinkedIn",
+                "link": "#",
+                "image": "linkedin",
+                "active": true
+            }
+        ],
+        "map_point": {
+            "margin_top": 300,
+            "margin_left": 250,
+            "region": "aquitaine"
+        }
+    },
+    {
+        "id": 2,
+        "title": "test1",
+        "company_name": "TEST2",
+        "description": "Une commune française située à proximité de la mer. Il pourrait s'agir de la plus ancienne ville de France",
+        "logo": "alaryk.png",
+        "creation_date": "01/01/1970",
+        "partner_from": "01/01/1970",
+        "website": "alaryk.fr",
+        "social_media": [
+            {
+                "title": "Instagram",
+                "link": "#",
+                "image": "instagram",
+                "active": false
+            },
+            {
+                "title": "Facebook",
+                "link": "#",
+                "image": "facebook",
+                "active": false
+            },
+            {
+                "title": "LinkedIn",
+                "link": "#",
+                "image": "linkedin",
+                "active": true
+            }
+        ],
+        "map_point": {
+            "margin_top": 150,
+            "margin_left": 275,
+            "region": "idf"
+        }
+    }
+]

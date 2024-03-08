@@ -1,0 +1,52 @@
+{
+    "regions": [
+        {
+            "title": "grandest",
+            "name": "Grang Est"
+        },
+        {
+            "title": "aquitaine",
+            "name": "Nouvelle-Aquitaine"
+        },
+        {
+            "title": "alpes",
+            "name": "Auvergne-Rhône-Alpes"
+        },
+        {
+            "title": "bourgogne",
+            "name": "Bourgogne"
+        },
+        {
+            "title": "bretagne",
+            "name": "Bretagne"
+        },
+        {
+            "title": "centreloire",
+            "name": "Centre-Val de Loire"
+        },
+        {
+            "title": "idf",
+            "name": "Île-de-France"
+        },
+        {
+            "title": "occitaine",
+            "name": "Occitanie"
+        },
+        {
+            "title": "hdf",
+            "name": "Hauts-de-France"
+        },
+        {
+            "title": "normandie",
+            "name": "Normandie"
+        },
+        {
+            "title": "paysloire",
+            "name": "Pays de la Loire"
+        },
+        {
+            "title": "azur",
+            "name": "Provence-Alpes-Côte d'Azur"
+        }
+    ]
+}

@@ -3,3 +3,25 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+
+home:
+    path: /
+    controller : 'App\Controller'
+
+equipment:
+    path: /equipment
+    controller: 'App\Controller'
+
+references:
+    path: /references
+    controller: 'App\Controller'
+
+contacts:
+    path: /contacts
+    controller: 'App\Controller'
+
+adminpanel:
+    path: /adminpanel
+    controller: 'App\Controller'
+
