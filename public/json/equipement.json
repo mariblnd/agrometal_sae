@@ -1,0 +1,23 @@
+[
+    {
+        "title": "brewpub",
+        "image": "brewpub.jpeg",
+        "description_short": "#",
+        "description_long": "#",
+        "preview": true
+    },
+    {
+        "title": "artisanale",
+        "image": "artisanale.jpeg",
+        "description_short": "#",
+        "description_long": "#",
+        "preview": true
+    },
+    {
+        "title": "industriel",
+        "image": "industriel.jpeg",
+        "description_short": "#",
+        "description_long": "#",
+        "preview": true
+    }
+]
