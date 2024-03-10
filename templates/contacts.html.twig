@@ -1,0 +1,9 @@
+Email: {{ contactsFile.email }}<br>
+Adresse: {{ contactsFile.adress }}<br>
+Téléphone: {{ contactsFile.telephone }}<br>
+Adresse titre: {{ contactsFile.adress_title }}<br>
+
+Réseaux sociaux:<br>
+{% for social_media in contactsFile.social_media %}
+    <a href="{{ social_media.link }}">{{ social_media.title }}</a><br>
+{% endfor %}

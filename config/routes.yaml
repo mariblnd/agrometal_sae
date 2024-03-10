@@ -19,7 +19,7 @@ references:
 
 contacts:
     path: /contacts
-    controller : 'App\Controller\AgrometalController::homepageController'
+    controller : 'App\Controller\AgrometalController::contactsController'
 
 adminpanel:
     path: /adminpanel
