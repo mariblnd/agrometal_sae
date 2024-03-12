@@ -18,7 +18,6 @@
         "symfony/framework-bundle": "7.0.*",
         "symfony/runtime": "7.0.*",
         "symfony/twig-bundle": "7.0.*",
-        "symfony/ux-twig-component": "^2.16",
         "symfony/yaml": "7.0.*"
     },
     "config": {
