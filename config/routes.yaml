@@ -25,3 +25,6 @@ adminpanel:
     path: /adminpanel
     controller : 'App\Controller\AgrometalController::adminpanelController'
 
+
+    
+
