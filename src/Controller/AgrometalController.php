@@ -34,14 +34,14 @@ class AgrometalController extends AbstractController
         'equipementsFile' => $equipementsFile,
         'mapFile' => $mapFile,
         'newsFile' => $newsFile,
-        'referencesFile' => $referencesFile
+        'referencesFile' => $referencesFile,
     ]);
 }
 
 
     /*******************************************  REFERENCES  ***********************************************/
 
-    public function referencesController(){
+    public function referencesController(EntityManagerInterface $entityManager){
 
         $repository = $entityManager->getRepository(AgromeetalJSON::class);
 

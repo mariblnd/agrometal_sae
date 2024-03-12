@@ -1,0 +1,26 @@
+{# {% verbatim %} #}
+<div class="news-wrap">
+    <div class="news-content">
+        <div class="news-title">
+            <h2>Dernières nouvelles</h2>
+            <div class="news-eventname">
+                <h3>{{ newsFile.title }}</h3>
+                <p>{{ newsFile.date }}</p>
+            </div>
+        </div>
+        <div class="news-description">
+            <p class="news-description-text">{{ newsFile.description }}</p>
+            <div class="news-chiffres">
+                {% for item in newsFile.chiffres %}
+                    {% if item.active %}
+                        <div class="chiffres-element white">
+                            <h4>{{ item.number }}</h4>
+                            <p>{{ item.title|raw}}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>  
+        </div>
+    </div>
+</div>
+{# {% endverbatim %} #}

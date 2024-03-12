@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="en" ng-app="MainController">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('style/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/main-backgrounds.css') }}">
+    <title>Agrometal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
+    <script src="{{ asset('JS/main_controller.js') }}"></script>
+</head>
+<body>
+    <div class="main-backgrounds main-background-1">
+        {% include 'components_static/header.html.twig' %}
+        <div class="optimization-box-1440" style="margin-top: -125px;">
+            <div class="mainpage-welcometext-block">
+                <h1><b class="yellow-text">Le succès</b> de nos clients est <b class="yellow-text">notre succès</b></h1>
+                <p>AGROMETAL produit des équipements clés en main pour la production de tous les types de bière.</p>
+                <button class="hover-btn">Découvrir notre equipement</button>
+            </div>
+        </div>
+    </div>
+    <main>
+        {% block main %}Default Main{% endblock %}
+    </main>
+    {% include 'components_static/footer.html.twig' %}
+</body>
 </html>

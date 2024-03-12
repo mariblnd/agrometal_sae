@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block main %}
+    {% include 'components_static/news.html.twig' %}
+    <div class="optimization-box-1440 mainpage-blockwrap-padding" style="justify-content: space-between; align-items: center;">
+        <div class="mainpage-presentation-textblock">
+            <div class="mainpage-presentation-title">
+                <h1>Présentation de l'entreprise</h1>
+                <h2>Agrometal est un fabricant expérimenté d'équipements pour les brasseries artisanales et industrielles</h2>
+            </div>
+            <p class="mainpage-presentation-text">Agrometal produit des équipements pour des brasseries clés en main. Lors de la conception et de la fabrication des équipements, nous veillons tout particulièrement à utiliser des solutions techniques innovantes qui permettent de réduire la consommation d'énergie et d'augmenter la productivité.<br><br>Pour la production des équipements, Agrometal n'utilise que des matières premières et des composants de haute qualité provenant de fabricants de renommée mondiale.</p>
+            <div class="news-chiffres">
+                <div class="chiffres-element littletext-black">
+                    <h4>30</h4>
+                    <p>ans d'expérience<br>dans le domaine</p>
+                </div>
+                <div class="chiffres-element littletext-black">
+                    <h4>150></h4>
+                    <p>brasseries mises<br>en service</p>
+                </div>
+                <div class="chiffres-element littletext-black">
+                    <h4>16</h4>
+                    <p>pays avec nos<br>clients</p>
+                </div>
+            </div>
+        </div>
+        <img class="mainpage-presentation-photo" src="images/other/mainpage-presentation.jpg" alt="Notre projet">
+    </div>
+    <div class="background-gray mainpage-blockwrap-padding">
+        <div class="optimization-box-1440">
+            <div class="mainpage-verticalblock-wrap">
+                <div class="title-wrap">
+                    <h1>La clé de notre succès</h1>
+                    <h2>Les points forts de notre entreprise</h2>
+                </div>
+                <div class="mainpage-futureswrap">
+                    <div class="mainpage-future">
+                        <div class="mainpage-future-circle">
+                            <p>1</p>
+                        </div>
+                        <h3>équipement<br>moderne</h3>
+                    </div>
+                    <div class="mainpage-future">
+                        <div class="mainpage-future-circle">
+                            <p>2</p>
+                        </div>
+                        <h3>technologie<br>efficace</h3>
+                    </div>
+                    <div class="mainpage-future">
+                        <div class="mainpage-future-circle">
+                            <p>3</p>
+                        </div>
+                        <h3>Brasseries clé<br>en main</h3>
+                    </div>
+                    <div class="mainpage-future">
+                        <div class="mainpage-future-circle">
+                            <p>4</p>
+                        </div>
+                        <h3>Formation des<br>brasseurs</h3>
+                    </div>
+                    <div class="mainpage-future">
+                        <div class="mainpage-future-circle">
+                            <p>5</p>
+                        </div>
+                        <h3>SAV</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'components_static/mainmenu_typeselect.html.twig' %}
+    {% include 'components_static/mainmenu_portfolio.html.twig' %}
+{% endblock %}

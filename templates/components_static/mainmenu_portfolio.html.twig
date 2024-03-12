@@ -1,0 +1,63 @@
+<script>
+    var data = {{ referencesFile|json_encode|raw }};
+    var data_regions = {{ mapFile|json_encode|raw}};
+</script>
+<div class="background-gray" ng-controller="nosReferences" id="referencesControllerDiv">
+    {% verbatim %}
+    <div class="optimization-box-1440 mainpage-blockwrap-padding">
+        <div class="mainpage-verticalblock-wrap">
+            <div class="title-wrap-left">
+                <h1>Nos références</h1>
+                <h2>Partenaires en France, qui nous font confiance</h2>                    
+            </div>
+            <div class="mainpage-references-wrap">
+                <div>
+                    <button ng-click="changeSelectedClient(item.id, item.map_point.region)" ng-repeat="item in data" style="margin-top: {{ item.map_point.margin_top }}px; margin-left: {{ item.map_point.margin_left }}px;" class="mainpage-references-btn" ng-style="getMapBtnActive(item.id)"></button>
+                    <object class="mainpage-references-map" type="image/svg+xml" data="images/references/franceMap.svg" id="references-map"></object>
+                </div>
+                <div class="mainpage-references-companywrap">
+                    <div class="mainpage-references-namewrap">
+                        <img ng-src="{{ image_dir_logo }}{{ data[selected_client].logo }}" alt="Client logo">
+                        <div class="mainpage-references-name">
+                            <h3>{{ data[selected_client].company_name }}</h3>
+                            <p>{{ data[selected_client].description }}</p>
+                        </div>
+                    </div>
+                    <ul class="mainpage-references-infowrap">
+                        <ul class="mainpage-references-infoblock">
+                            <li><h4>Date de création</h4></li>
+                            <li><p>{{ data[selected_client].creation_date }}</p></li>
+                        </ul>
+                        <ul class="mainpage-references-infoblock">
+                            <li><h4>Nos partenaires depuis</h4></li>
+                            <li><p>{{ data[selected_client].partner_from }}</p></li>
+                        </ul>
+                        <ul class="mainpage-references-infoblock">
+                            <li><h4>Site officiel</h4></li>
+                            <li><p><a class="hover-opacity" href="https://{{ data[selected_client].website }}/">{{ data[selected_client].website }}</a></p></li>
+                        </ul>
+                        <ul class="mainpage-references-infoblock">
+                            <li><h4>Réseaux sociaux</h4></li>
+                            <ul class="mainpage-references-socialmedia">
+                            <li ng-repeat="item in data[selected_client].social_media" ng-if="item.active">
+                                <a href="{{ item.link }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}{{ item.image }}_cont.svg" alt="{{ item.title }}" width="50px" height="50px"></a></li>
+                            </ul>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <a class="mainpage-references-seemore hover-opacity" ng-click="seeMore()">
+                    <img class="rotate-animation" src="images/other/arrow_down.svg" alt="Voir plus"  ng-class="{'rotate180': isRotated}">
+                    <p class="mainpage-littlelink">Tous nos cleints</p>
+                </a>
+                <div class="mainpage-references-seemore-wrap fade" ng-show="isVisible">
+                    <a ng-repeat="item in data" ng-click="changeSelectedClient(item.id, item.map_point.region)" class="mainpage-references-seemore-item">
+                        <img ng-src="images/references/clients_logos/{{ item.logo}}" alt="{{ item.company_name }}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endverbatim %}
+</div>

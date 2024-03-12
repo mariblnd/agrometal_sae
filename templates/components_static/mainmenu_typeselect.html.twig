@@ -1,0 +1,17 @@
+<div class="optimization-box-1440 mainpage-blockwrap-padding">
+    <div class="mainpage-verticalblock-wrap">
+        <div class="title-wrap">
+            <h1>Sélectionnez le type de votre salle de brassage</h1>
+            <h2>Nous produisons les équipements pour toutes les étapes de la<br>production de la bière</h2>                    
+        </div>
+        <div class="mainpage-equipement-types-wrap">
+            {% for item in equipementsFile %}
+                {% if item.preview %}
+                    {% set asset_location = 'images/categories_types/' ~ item.image %}
+                    <a class='mainpage-equipement-types-elem hover-opacity' href='#'><img src='{{ asset(asset_location) }}'alt='{{ item.title }}'><p>{{ item.title }}</p></a>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <a class="mainpage-littlelink hover-opacity" href="#">Plus d'information dans notre catalogue</a>
+    </div>
+</div>

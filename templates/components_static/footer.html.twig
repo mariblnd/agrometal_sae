@@ -1,0 +1,46 @@
+<footer>
+    <div class="optimization-box-1440 footer-wrap">
+        <img src="images/brand/logo.png" alt="Logo">
+        <div class="footer-category-wrap">
+            <div class="footer-category-line">
+                <a href="#" class="hover-opacity">
+                    <h3>Contacts</h3>
+                </a>
+                <ul>
+                    <li>Tél: {{ contactsFile.telephone }}</li>
+                    <li>E-Mail: {{ contactsFile.email }}</li>
+                    <li>Adress: {{ contactsFile.adress }}</li>
+                </ul>
+            </div>
+            <div class="footer-category-line">
+                <a href="#" class="hover-opacity"><h3>Equipement</h3></a>
+                <ul>
+                    {% for item in equipementsFile %}
+                        <a href='#'><li class='capitaliste hover-opacity'>{{ item.title }}</li></a>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="footer-category-line">
+                <h3>Contacter</h3>
+                <ul>
+                    <li>Nouveau projet</li>
+                    <li>Expansion de la production</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-socialmedia-wrap">
+            {% for item in contactsFile.social_media %}
+                {% if item.active %}
+                    {% set asset_location = 'images/social_media/' ~ item.image %}
+                    <a href='{{ item.link }}'><img src='{{ asset(asset_location) }}' alt='{{ item.title }}'></a>
+                {% endif %}
+            {% endfor %}
+            <a href='mailto:{{ contactsFile.email }}'><img width='50px' height='50px' src='{{ asset('images/social_media/mail.svg') }}' alt='Envoyer un courrier'></a>
+        </div>
+    </div>
+    <div class="footer-credits">
+        <div class="optimization-box-1440" style="justify-content: right;">
+            <p>Turnkey website by <a class="hover-opacity" href="https://pev-works.com/">pev-works.com</a></p>
+        </div>
+    </div>
+</footer>
