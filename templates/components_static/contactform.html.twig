@@ -1,0 +1,57 @@
+{% verbatim %}
+<div class="contactform-generalWrap none" ng-controller="contactForm" id="contactForm">
+    <div class="contactform-block">
+        <div class="contactform-line"></div>
+        <div style="display:flex;justify-content: right; width: 100%;">
+            <button onclick="swithContactFormStatus()" class="contactform-closebtn hover-opacity"><img class="hover-opacity" src="images/other/close.svg" alt="Close window" /></button>
+        </div>
+        <form class="contactform-contentWrap">
+            <div class="contactform-title">
+                <h1>Nous contacter</h1>
+                <h3>Que vous soyez déjà notre client ou que vous souhaitiez simplement commencer à travailler avec nous, nous vous répondrons dans les plus brefs délais.</h3>
+            </div>
+            <div class="contactform-input">
+                <h2>Nom*</h2>
+                <input type="text" placeholder="Eugène Delacroix" required>
+            </div>
+            <div class="contactform-input">
+                <h2>Message</h2>
+                <textarea ng-model="messageText" ng-change="messageTextCount()" rows="10" placeholder="Bonjour, je voudrais préciser..." maxlength="750"></textarea>
+                <p class="contactform-countletters" ng-style="{'color': messageTextRED ? 'var(--redTEXT)' : 'var(--littletext-black)'}">{{ messageTextNumber }}/750</p>
+            </div>
+            <div class="contactform-inputRowWrap">
+                <div class="contactform-input">
+                    <h2>E-Mail*</h2>
+                    <input type="email" placeholder="example@gmail.com" required>
+                </div>
+                <div class="contactform-input">
+                    <h2>Téléphone</h2>
+                    <input type="tel" placeholder="07 00 00 99 99">
+                </div>
+            </div>
+            <div class="contactform-input">
+                <h2>Vous souhaitez agrandir une brasserie déjà existante?</h2>
+                <div class="contactform-checkbox">
+                    <input type="checkbox" ng-model="additionalInfo">
+                    <p>Oui</p>
+                </div>
+            </div>
+            <div class="contactform-additionalWrap" ng-show="additionalInfo">
+                <div class="contactform-input">
+                    <h2>Nom de la brasserie</h2>
+                    <input type="text" placeholder="Brasserie Example">
+                </div>
+                <div class="contactform-input">
+                    <h2>Qu'est-ce que vous voulez réaliser?</h2>
+                    <textarea ng-model="projectToCreateText" ng-change="projectToCreateTextCount()" maxlength="750" rows="10" placeholder="Amélioration de la filtration du houblon dans la brasserie..."></textarea>
+                    <p class="contactform-countletters" ng-style="{'color': projectToCreateTextRED ? 'var(--redTEXT)' : 'var(--littletext-black)'}">{{ projectToCreateTextNumber }}/750</p>
+                </div>
+            </div>
+            <div class="contactform-submit">
+                <button class="hover-btn" type="submit">Envoyer votre message</button>
+                <a class="hover-opacity" href="#">Sinon, vous pouvez nous contacter directement en utilisant nos contacts</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endverbatim %}

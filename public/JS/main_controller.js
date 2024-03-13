@@ -1,5 +1,37 @@
 var myApp = angular.module('MainController', []);
 
+myApp.controller('contactForm', function($scope) {
+    $scope.messageTextNumber = 0;
+    $scope.messageTextRED = false;
+    $scope.messageTextCount = function() {
+        if ($scope.messageText) {
+            $scope.messageTextNumber = $scope.messageText.length;
+            if ($scope.messageText.length >= 750) {
+                $scope.messageTextRED = true;
+            } else{
+                $scope.messageTextRED = false;
+            }
+        } else{
+            $scope.messageTextNumber  = 0;
+        }
+    };
+
+    $scope.projectToCreateTextNumber = 0;
+    $scope.projectToCreateTextRED = false;
+    $scope.projectToCreateTextCount = function() {
+        if ($scope.projectToCreateText) {
+            $scope.projectToCreateTextNumber = $scope.projectToCreateText.length;
+            if ($scope.projectToCreateText.length >= 750) {
+                $scope.projectToCreateTextRED = true;
+            } else{
+                $scope.projectToCreateTextRED = false;
+            }
+        } else{
+            $scope.projectToCreateTextNumber = 0;
+        }
+    };
+});
+
 myApp.controller('nosReferences', function($scope,$timeout) {
     $scope.image_dir_logo = 'images/references/clients_logos/';
     $scope.image_dir_socialmedia = 'images/social_media/';
