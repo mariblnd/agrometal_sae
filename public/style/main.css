@@ -326,7 +326,7 @@ header button{
 }
 
 .title-wrap h2, .title-wrap-left h2{
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.5em;
     color: var(--mediumtext-black);
 }
@@ -794,4 +794,37 @@ footer{
 .contactform-closebtn img{
     width: 30px;
     height: 30px;
+}
+
+/* CONTACT BLOCK */
+
+.contactblockBtn{
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: 500;
+    color: white;
+    background-color: var(--darkblue);
+}
+
+.contactblock-btnswrap{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contactblock-bigbtn{
+    width: fit-content;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.contactblock-bigbtn img{
+    width: 948px;
+    height: 375px;
 }
