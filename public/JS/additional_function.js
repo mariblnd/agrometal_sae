@@ -9,4 +9,4 @@ function swithContactFormStatus() {
     }
 
     contactFormStatus = !contactFormStatus;
-  }
+}
