@@ -1,4 +1,3 @@
-{% verbatim %}
 <div class="contactform-generalWrap none" ng-controller="contactForm" id="contactForm">
     <div class="contactform-block">
         <div class="contactform-line"></div>
@@ -6,6 +5,7 @@
             <button onclick="swithContactFormStatus()" class="contactform-closebtn hover-opacity"><img class="hover-opacity" src="images/other/close.svg" alt="Close window" /></button>
         </div>
         <form class="contactform-contentWrap">
+            {% verbatim %}
             <div class="contactform-title">
                 <h1>Nous contacter</h1>
                 <h3>Que vous soyez déjà notre client ou que vous souhaitiez simplement commencer à travailler avec nous, nous vous répondrons dans les plus brefs délais.</h3>
@@ -47,11 +47,11 @@
                     <p class="contactform-countletters" ng-style="{'color': projectToCreateTextRED ? 'var(--redTEXT)' : 'var(--littletext-black)'}">{{ projectToCreateTextNumber }}/750</p>
                 </div>
             </div>
+            {% endverbatim %}
             <div class="contactform-submit">
                 <button class="hover-btn" type="submit">Envoyer votre message</button>
-                <a class="hover-opacity" href="#">Sinon, vous pouvez nous contacter directement en utilisant nos contacts</a>
+                <a class="hover-opacity" href="{{ path('contacts') }}">Sinon, vous pouvez nous contacter directement en utilisant nos contacts</a>
             </div>
         </form>
     </div>
 </div>
-{% endverbatim %}

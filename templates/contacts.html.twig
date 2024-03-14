@@ -1,9 +1,62 @@
-Email: {{ contactsFile.email }}<br>
-Adresse: {{ contactsFile.adress }}<br>
-Téléphone: {{ contactsFile.telephone }}<br>
-Adresse titre: {{ contactsFile.adress_title }}<br>
+{% extends 'base.html.twig' %}
+{% block head %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="{{ asset('style/map.css') }}">
+{% endblock %}
+{% block background %}
+main-background-2
+{% endblock %}
+{% block preview %}
+    <div class="optimization-box-1440" style="margin-top: -125px;">
+        <div class="mainpage-welcometext-block">
+            <h1><b class="yellow-text">Contactez</b>-nous</h1>
+            <h2>Nous sommes toujours prêts à répondre à vos questions ou à prendre votre commande</h2>
+        </div>
+    </div>
+{% endblock %}
+{% block main %}
+    <div class="optimization-box-1440 mainpage-blockwrap-padding" style="justify-content: space-between; align-items: center;">
+            <div class="contactpage-infowrap">
+                <div class="contactpage-infobox">
+                    <h1>Nos contacts</h1>
+                    <h2>Tous les moyens possibles pour nous contacter, ou remplir le <a onclick="swithContactFormStatus()" class="hover-opacity">formulaire</a></h2>
+                </div>
+                <div class="contactpage-infobox">
+                    <h3>{{ contactsFile.adress_title }}</h1>
+                    <p>{{ contactsFile.adress }}</p>
+                </div>
+                <div class="contactpage-infobox">
+                    <h3>Contacts</h1>
+                    <p>Tél: {{ contactsFile.telephone }}<br>E-Mail:  {{ contactsFile.email }}</p>
+                </div>
+            </div>
+            <div id="map"></div>
+            <script>
+                var map = L.map('map').setView([47.44842315381025, 19.04663503650425], 15);
 
-Réseaux sociaux:<br>
-{% for social_media in contactsFile.social_media %}
-    <a href="{{ social_media.link }}">{{ social_media.title }}</a><br>
-{% endfor %}
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                L.marker([47.44842315381025, 19.04663503650425]).addTo(map)
+                    .bindPopup('Hunyadi János út 3 H-1117 Budapest ')
+                    .openPopup();
+            </script>
+    </div>
+    <div class="background-gray mainpage-blockwrap-padding">
+        <div class="optimization-box-1440">
+            <div class="contactpage-consultant-infowrap">
+                <div class="contactpage-infobox">
+                    <h1>Consultant</h1>
+                    <h3>{{ contactsFile.work_contact.name}}</h3>
+                    <p>{{ contactsFile.work_contact.title }}</p>
+                </div>
+                <div class="contactpage-infobox">
+                    <h3>Contacts</h1>
+                    <p>Tél/WhatsApp: {{ contactsFile.work_contact.telephone }}<br>E-Mail:  {{ contactsFile.work_contact.mail }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

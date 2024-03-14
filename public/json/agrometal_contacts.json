@@ -22,5 +22,11 @@
             "image": "linkedin.svg",
             "active": false
         }
-    ]
+    ],
+    "work_contact": {
+        "title": "ingénieur technico-commercial pour la zone francophone",
+        "name": "Volodymyr SAVCHENKO",
+        "telephone": "Tél/WhatsApp: (+36) 7 03 98 99 17",
+        "mail": "beer@agrometal.info"
+    }
 }

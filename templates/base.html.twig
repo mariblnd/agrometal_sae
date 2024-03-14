@@ -15,23 +15,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
     <script src="{{ asset('JS/main_controller.js') }}"></script>
+    {% block head %}{% endblock %}
     <script src="{{ asset('JS/additional_function.js') }}"></script>
 </head>
 <body>
     {% include 'components_static/contactform.html.twig' %}
-    <div class="main-backgrounds main-background-1">
+    <div class="main-backgrounds {% block background %} main-background-1 {% endblock %}">
         {% include 'components_static/header.html.twig' %}
-        <div class="optimization-box-1440" style="margin-top: -125px;">
-            <div class="mainpage-welcometext-block">
-                <h1><b class="yellow-text">Le succès</b> de nos clients est <b class="yellow-text">notre succès</b></h1>
-                <p>AGROMETAL produit des équipements clés en main pour la production de tous les types de bière.</p>
-                <button class="hover-btn">Découvrir notre equipement</button>
-            </div>
-        </div>
+        {% block preview %}Default Preview{% endblock %}
     </div>
     <main>
         {% block main %}Default Main{% endblock %}
     </main>
+    {% include 'components_static/contactblock.html.twig' %}
     {% include 'components_static/footer.html.twig' %}
 </body>
 </html>
