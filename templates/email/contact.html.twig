@@ -1,0 +1,19 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+    <h1>Demande de {{contact.nom}}</h1>
+
+    <p>Email : {{contact.mail}}</p>
+    <p>Téléphone : {{contact.tel}}</p>
+    <br>
+    <p>Message : {{contact.message}}</p>
+
+    {% if contact.brasserieExist %}
+        <p>Pour {{ contact.brasserieName }}</p>
+        <p>Projet : {{ contact.project }}</p>
+    {% endif %}
+
+</body>
+</html>
