@@ -2,11 +2,11 @@
 
 
 {% block main %}
-    <form class="adminlogin-wrap" method="post" ng-controller="adminLogin">
+    <form class="adminlogin-wrap" method="post" ng-controller="adminLogin" action="{{ path('app_login') }}">
         <div class="contactform-line"></div>
         <div class="contactform-contentWrap">
             {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                <div class="contactform-alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
 
             {% if not app.user %}

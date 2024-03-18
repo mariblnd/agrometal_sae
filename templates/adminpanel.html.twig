@@ -1,1 +1,9 @@
-<a href="{{ path('app_logout') }}">Logout</a>
+{% extends 'admin_base.html.twig' %}
+{% block main %}
+    <div class="adminpanel-header">
+        <div class="admin-headerwrap">
+            <h1>Control Panel</h1>
+            <a class="hover-btn" href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    </div>
+{% endblock %}
