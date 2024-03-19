@@ -1,0 +1,13 @@
+
+
+{% block title %}Edit EquipmentsMinusOne{% endblock %}
+
+{% block body %}
+    <h1>Edit EquipmentsMinusOne</h1>
+
+    {{ include('equipments_minus_one/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_equipments_minus_one_index') }}">back to list</a>
+
+    {{ include('equipments_minus_one/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MapRegions{% endblock %}
+
+{% block body %}
+    <h1>Create new MapRegions</h1>
+
+    {{ include('map_regions/_form.html.twig') }}
+
+    <a href="{{ path('app_map_regions_index') }}">back to list</a>
+{% endblock %}

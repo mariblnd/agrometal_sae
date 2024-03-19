@@ -1,0 +1,13 @@
+
+
+{% block title %}Edit PointCarte{% endblock %}
+
+{% block body %}
+    <h1>Edit PointCarte</h1>
+
+    {{ include('point_carte/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_point_carte_index') }}">back to list</a>
+
+    {{ include('point_carte/_delete_form.html.twig') }}
+{% endblock %}

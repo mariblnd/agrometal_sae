@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MapRegions index{% endblock %}
+
+{% block body %}
+    <h1>MapRegions index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for map_region in map_regions %}
+            <tr>
+                <td>{{ map_region.id }}</td>
+                <td>{{ map_region.name }}</td>
+                <td>{{ map_region.title }}</td>
+                <td>
+                    <a href="{{ path('app_map_regions_show', {'id': map_region.id}) }}">show</a>
+                    <a href="{{ path('app_map_regions_edit', {'id': map_region.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_map_regions_new') }}">Create new</a>
+{% endblock %}

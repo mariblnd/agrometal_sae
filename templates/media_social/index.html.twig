@@ -1,0 +1,38 @@
+
+{% block body %}
+    <h1>Les réseaux sociaux</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lien</th>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Activé</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for media_social in media_socials %}
+            <tr>
+                <td>{{ media_social.id }}</td>
+                <td>{{ media_social.link }}</td>
+                <td>{{ media_social.image }}</td>
+                <td>{{ media_social.title }}</td>
+                <td>{{ media_social.active ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_media_social_show', {'id': media_social.id}) }}">show</a>
+                    <a href="{{ path('app_media_social_edit', {'id': media_social.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_media_social_new') }}">Create new</a>
+{% endblock %}

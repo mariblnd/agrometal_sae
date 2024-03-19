@@ -1,0 +1,11 @@
+
+
+{% block title %}New MediaSocial{% endblock %}
+
+{% block body %}
+    <h1>Create new MediaSocial</h1>
+
+    {{ include('media_social/_form.html.twig') }}
+
+    <a href="{{ path('app_media_social_index') }}">back to list</a>
+{% endblock %}

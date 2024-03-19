@@ -1,0 +1,42 @@
+
+
+{% block title %}EquipmentsMinusOne index{% endblock %}
+
+{% block body %}
+    <h1>EquipmentsMinusOne index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Small_description</th>
+                <th>Big_description</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipments_minus_one in equipments_minus_ones %}
+            <tr>
+                <td>{{ equipments_minus_one.id }}</td>
+                <td>{{ equipments_minus_one.title }}</td>
+                <td>{{ equipments_minus_one.smallDescription }}</td>
+                <td>{{ equipments_minus_one.bigDescription }}</td>
+                <td>{{ equipments_minus_one.image }}</td>
+                <td>
+                    <a href="{{ path('app_equipments_minus_one_show', {'id': equipments_minus_one.id}) }}">show</a>
+                    <a href="{{ path('app_equipments_minus_one_edit', {'id': equipments_minus_one.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_equipments_minus_one_new') }}">Create new</a>
+    <a href="../equipments1">équipement2</a>
+{% endblock %}

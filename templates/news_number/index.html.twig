@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NewsNumber index{% endblock %}
+
+{% block body %}
+    <h1>NewsNumber index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title_number</th>
+                <th>Active</th>
+                <th>Number</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for news_number in news_numbers %}
+            <tr>
+                <td>{{ news_number.id }}</td>
+                <td>{{ news_number.titleNumber }}</td>
+                <td>{{ news_number.active ? 'Yes' : 'No' }}</td>
+                <td>{{ news_number.number }}</td>
+                <td>
+                    <a href="{{ path('app_news_number_show', {'id': news_number.id}) }}">show</a>
+                    <a href="{{ path('app_news_number_edit', {'id': news_number.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_news_number_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,47 @@
+
+
+{% block body %}
+    <h1>Les entreprises</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Logo</th>
+                <th>Title</th>
+                <th>Website</th>
+                <th>Description</th>
+                <th>Company_name</th>
+                <th>Partner_from</th>
+                <th>Creation_date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entreprise in entreprises %}
+            <tr>
+                <td>{{ entreprise.id }}</td>
+                <td>{{ entreprise.logo }}</td>
+                <td>{{ entreprise.title }}</td>
+                <td>{{ entreprise.website }}</td>
+                <td>{{ entreprise.description }}</td>
+                <td>{{ entreprise.companyName }}</td>
+                <td>{{ entreprise.partnerFrom }}</td>
+                <td>{{ entreprise.creationDate }}</td>
+                <td>
+                    <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">show</a>
+                    <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entreprise_new') }}">Create new</a>
+    <a href="/adminpanel/socialmedia">Modifier les réseaux sociaux des entreprises</a>
+    <a href="/adminpanel/mappoint">Modifier les points pour la map</a>
+{% endblock %}

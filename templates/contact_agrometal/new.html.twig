@@ -1,0 +1,11 @@
+
+
+{% block title %}New ContactAgrometal{% endblock %}
+
+{% block body %}
+    <h1>Create new ContactAgrometal</h1>
+
+    {{ include('contact_agrometal/_form.html.twig') }}
+
+    <a href="{{ path('app_contact_agrometal_index') }}">back to list</a>
+{% endblock %}

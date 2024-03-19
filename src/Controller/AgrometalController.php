@@ -9,9 +9,28 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\AgromeetalJSON;
+
+//ENTITY
 use App\Entity\Contact;
+use App\Entity\News;
+use App\Entity\NewsNumber;
 use App\Form\ContactType;
+use App\Entity\AgromeetalJSON;
+use App\Entity\ContactAgrometal;
+use App\Entity\Entreprise;
+use App\Entity\Equipments;
+use App\Entity\EquipmentsMinusOne;
+use App\Entity\EquipmentsMinusTwo;
+use App\Entity\MapRegions;
+use App\Entity\MediaSocial;
+use App\Entity\PointCarte;
+
+
+//FORM Things
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 
 
 class AgrometalController extends AbstractController
@@ -20,24 +39,6 @@ class AgrometalController extends AbstractController
 
     public function homepageController(EntityManagerInterface $entityManager, Request $request)
 {
-
-
-    //FORMULAIRE DE CONTACT
-
-       /* $this->addFlash('success', 'Message envoyé');
-
-        $emailContent = "Message de : $name\n";
-        $emailContent .= "Adresse e-mail : $email\n\n";
-        $emailContent .= "Message :\n$message";
-
-        $email = (new Email())
-                ->from('marieblanchard7@laposte.net') 
-                ->to('marieblanchard7@laposte.net') 
-                ->subject('Nouveau message de contact')
-                ->text($emailContent);
-            
-        $mailer->send($email);*/
-
     
     $repository = $entityManager->getRepository(AgromeetalJSON::class);
 
@@ -53,6 +54,23 @@ class AgrometalController extends AbstractController
     $newsFile = $news ? $news->getJsonFile() : null;
     $referencesFile = $references ? $references->getJsonFile() : null;
 
+
+    $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll(); 
+
+    $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
+
+    $entreprise_bdd = $entityManager->getRepository(Entreprise::class)->findAll();
+    $point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+
+    $equipments_bdd = $entityManager->getRepository(Equipments::class)->findAll();
+    $equipements_min1_bdd = $entityManager->getRepository(EquipmentsMinusOne::class)->findAll(); 
+    $equipements_min2_bdd = $entityManager->getRepository(EquipmentsMinusTwo::class)->findAll();
+
+    $news_bdd = $entityManager->getRepository(News::class)->findAll();
+    $news_number_bdd = $entityManager->getRepository(NewsNumber::class)->findAll(); 
+
+    $regions_bdd = $entityManager->getRepository(MapRegions::class)->findAll();
+
     return $this->render('homepage.html.twig', [
 
         'contactsFile' => $contactsFile,
@@ -60,6 +78,17 @@ class AgrometalController extends AbstractController
         'mapFile' => $mapFile,
         'newsFile' => $newsFile,
         'referencesFile' => $referencesFile,
+
+        'contact_bdd' => $contact_bdd,
+        'entreprise_bdd' => $entreprise_bdd,
+        'socialmedia_bdd' => $socialmedia_bdd,
+        'equipments_bdd' => $equipments_bdd,
+        'equipements_min1_bdd' => $equipements_min1_bdd,
+        'equipements_min2_bdd' => $equipements_min2_bdd,
+        'news_bdd' => $news_bdd,
+        'news_number_bdd' => $news_number_bdd,
+        'regions_bdd' => $regions_bdd,
+        'point_map_bdd' => $point_map_bdd,
     ]);
 }
 
@@ -116,11 +145,23 @@ class AgrometalController extends AbstractController
         $mapFile = $map ? $map->getJsonFile() : null;
         $referencesFile = $references ? $references->getJsonFile() : null;
 
+        $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll(); 
+
+        $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
+
+        $entreprise_bdd = $entityManager->getRepository(Entreprise::class)->findAll();
+        $point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+
         return $this->render('references.html.twig',[
             'contactsFile' => $contactsFile,
             'mapFile' => $mapFile,
             'referencesFile' => $referencesFile,
             'form' => $form->createView(),
+
+            'contact_bdd' => $contact_bdd,
+            'socialmedia_bdd' => $socialmedia_bdd,
+            'entreprise_bdd' => $entreprise_bdd,
+            'point_map_bdd' => $point_map_bdd,
         ]);
     }
 
@@ -135,10 +176,22 @@ class AgrometalController extends AbstractController
      
          $contactsFile = $contacts ? $contacts->getJsonFile() : null;
          $equipementsFile = $equipements ? $equipements->getJsonFile() : null;
+
+        $equipments_bdd = $entityManager->getRepository(Equipments::class)->findAll();
+        $equipements_min1_bdd = $entityManager->getRepository(EquipmentsMinusOne::class)->findAll(); 
+        $equipements_min2_bdd = $entityManager->getRepository(EquipmentsMinusTwo::class)->findAll();
+
+        $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll(); 
+        $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
      
          return $this->render('equipements.html.twig', [
              'contactsFile' => $contactsFile,
-             'equipementsFile' => $equipementsFile
+             'equipementsFile' => $equipementsFile,
+             'equipments_bdd' => $equipments_bdd,
+            'equipments_min1_bdd' => $equipments_min1_bdd,
+            'equipments_min2_bdd' => $equipments_min2_bdd,
+            'contact_bdd' => $contact_bdd,
+            'socialmedia_bdd' => $socialmedia_bdd,
          ]);
      }
      
@@ -146,7 +199,7 @@ class AgrometalController extends AbstractController
 
      /*******************************************  ADMINPANEL  ***********************************************/
 
-     public function adminpanelController(EntityManagerInterface $entityManager)
+     public function adminpanelController(EntityManagerInterface $entityManager, Request $request)
      {
          $repository = $entityManager->getRepository(AgromeetalJSON::class);
      
@@ -161,18 +214,45 @@ class AgrometalController extends AbstractController
          $mapFile = $map ? $map->getJsonFile() : null;
          $newsFile = $news ? $news->getJsonFile() : null;
          $referencesFile = $references ? $references->getJsonFile() : null;
-     
-         return $this->render('adminpanel.html.twig', [
-             'contactsFile' => $contactsFile,
-             'equipementsFile' => $equipementsFile,
-             'mapFile' => $mapFile,
-             'newsFile' => $newsFile,
-             'referencesFile' => $referencesFile
+
+         $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll(); 
+
+        $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
+
+        $entreprise_bdd = $entityManager->getRepository(Entreprise::class)->findAll();
+        $point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+
+        $equipments_bdd = $entityManager->getRepository(Equipments::class)->findAll();
+        $equipements_min1_bdd = $entityManager->getRepository(EquipmentsMinusOne::class)->findAll(); 
+        $equipements_min2_bdd = $entityManager->getRepository(EquipmentsMinusTwo::class)->findAll();
+
+        $news_bdd = $entityManager->getRepository(News::class)->findAll();
+        $news_number_bdd = $entityManager->getRepository(NewsNumber::class)->findAll(); 
+
+        $regions_bdd = $entityManager->getRepository(MapRegions::class)->findAll();
+
+                
+            return $this->render('adminpanel.html.twig', [
+            'contactsFile' => $contactsFile,
+            'equipementsFile' => $equipementsFile,
+            'mapFile' => $mapFile,
+            'newsFile' => $newsFile,
+            'referencesFile' => $referencesFile,
+
+            'contact_bdd' => $contact_bdd,
+            'entreprise_bdd' => $entreprise_bdd,
+            'socialmedia_bdd' => $socialmedia_bdd,
+            'equipments_bdd' => $equipments_bdd,
+            'equipements_min1_bdd' => $equipements_min1_bdd,
+            'equipements_min2_bdd' => $equipements_min2_bdd,
+            'news_bdd' => $news_bdd,
+            'news_number_bdd' => $news_number_bdd,
+            'regions_bdd' => $regions_bdd,
+            'point_map_bdd' => $point_map_bdd,
          ]);
      }
-
-     
-     /*************************************** CONTACTS **************************************************/
+        
+  /*************************************** CONTACTS **************************************************/
 
     public function contactsController(EntityManagerInterface $entityManager)
 {
@@ -190,12 +270,41 @@ class AgrometalController extends AbstractController
     $newsFile = $news ? $news->getJsonFile() : null;
     $referencesFile = $references ? $references->getJsonFile() : null;
 
+    $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll(); 
+
+    $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
+
+    $entreprise_bdd = $entityManager->getRepository(Entreprise::class)->findAll();
+    $point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+
+    $equipments_bdd = $entityManager->getRepository(Equipments::class)->findAll();
+    $equipements_min1_bdd = $entityManager->getRepository(EquipmentsMinusOne::class)->findAll(); 
+    $equipements_min2_bdd = $entityManager->getRepository(EquipmentsMinusTwo::class)->findAll();
+
+    $news_bdd = $entityManager->getRepository(News::class)->findAll();
+    $news_number_bdd = $entityManager->getRepository(NewsNumber::class)->findAll(); 
+
+    $regions_bdd = $entityManager->getRepository(MapRegions::class)->findAll();
+
+
+
     return $this->render('contacts.html.twig', [
         'contactsFile' => $contactsFile,
         'equipementsFile' => $equipementsFile,
         'mapFile' => $mapFile,
         'newsFile' => $newsFile,
-        'referencesFile' => $referencesFile
+        'referencesFile' => $referencesFile,
+
+        'contact_bdd' => $contact_bdd,
+        'entreprise_bdd' => $entreprise_bdd,
+        'socialmedia_bdd' => $socialmedia_bdd,
+        'equipments_bdd' => $equipments_bdd,
+        'equipements_min1_bdd' => $equipements_min1_bdd,
+        'equipements_min2_bdd' => $equipements_min2_bdd,
+        'news_bdd' => $news_bdd,
+        'news_number_bdd' => $news_number_bdd,
+        'regions_bdd' => $regions_bdd,
+        'point_map_bdd' => $point_map_bdd,
     ]);
 }
 

@@ -1,0 +1,13 @@
+
+
+{% block title %}Edit MediaSocial{% endblock %}
+
+{% block body %}
+    <h1>Edit MediaSocial</h1>
+
+    {{ include('media_social/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_media_social_index') }}">back to list</a>
+
+    {{ include('media_social/_delete_form.html.twig') }}
+{% endblock %}

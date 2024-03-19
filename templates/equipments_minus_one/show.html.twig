@@ -1,0 +1,38 @@
+
+
+{% block title %}EquipmentsMinusOne{% endblock %}
+
+{% block body %}
+    <h1>EquipmentsMinusOne</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ equipments_minus_one.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ equipments_minus_one.title }}</td>
+            </tr>
+            <tr>
+                <th>Small_description</th>
+                <td>{{ equipments_minus_one.smallDescription }}</td>
+            </tr>
+            <tr>
+                <th>Big_description</th>
+                <td>{{ equipments_minus_one.bigDescription }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ equipments_minus_one.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_equipments_minus_one_index') }}">back to list</a>
+
+    <a href="{{ path('app_equipments_minus_one_edit', {'id': equipments_minus_one.id}) }}">edit</a>
+
+    {{ include('equipments_minus_one/_delete_form.html.twig') }}
+{% endblock %}

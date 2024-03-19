@@ -1,0 +1,11 @@
+
+
+{% block title %}New EquipmentsMinusOne{% endblock %}
+
+{% block body %}
+    <h1>Create new EquipmentsMinusOne</h1>
+
+    {{ include('equipments_minus_one/_form.html.twig') }}
+
+    <a href="{{ path('app_equipments_minus_one_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,46 @@
+
+
+
+
+{% block body %}
+    <h1>Les Équipements</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Preview</th>
+                <th>Description_long</th>
+                <th>Description_short</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipment in equipments %}
+            <tr>
+                <td>{{ equipment.id }}</td>
+                <td>{{ equipment.image }}</td>
+                <td>{{ equipment.title }}</td>
+                <td>{{ equipment.preview ? 'Yes' : 'No' }}</td>
+                <td>{{ equipment.descriptionLong }}</td>
+                <td>{{ equipment.descriptionShort }}</td>
+                <td>
+                    <a href="{{ path('app_equipments_show', {'id': equipment.id}) }}">show</a>
+                    <a href="{{ path('app_equipments_edit', {'id': equipment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_equipments_new') }}">Create new</a>
+    <a href="../equipments1">équipement1</a>
+
+   
+{% endblock %}

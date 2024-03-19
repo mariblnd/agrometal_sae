@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit NewsNumber{% endblock %}
+
+{% block body %}
+    <h1>Edit NewsNumber</h1>
+
+    {{ include('news_number/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_news_number_index') }}">back to list</a>
+
+    {{ include('news_number/_delete_form.html.twig') }}
+{% endblock %}
