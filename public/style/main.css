@@ -16,6 +16,7 @@
     --text-whitedark: #D9D9D9;
     --input-background: #F2F2F2;
     --redTEXT: #c62828;
+    --alertBackground: #d4b3b3;
 }
 
 ul{
@@ -621,7 +622,7 @@ footer{
     height: 100%;
     overflow-y: auto;
     overflow-x:hidden;
-    z-index: 3;
+    z-index: 99999999999;
 }
 
 .contactform-block{
@@ -675,7 +676,7 @@ footer{
     gap: 5px;
 }
 
-.contactform-input h2{
+.contactform-input label{
     font-size: 1.5em;
     font-weight: 500;
     color: var(--mediumtext-black);
@@ -893,4 +894,60 @@ footer{
     flex-direction: column;
     gap: 75px;
     max-width: 600px;
+}
+
+/* ADMIN LOGIN */
+
+.adminlogin-wrap{
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    margin-top: 200px;
+    gap: 15px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    padding-bottom: 35px;
+}
+
+.adminpanel-header{
+    height: 125px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    align-items: center;
+}
+
+.admin-headerwrap{
+    width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-headerwrap h1{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    color: var(--bigtext-black);
+}
+
+.admin-headerwrap a{
+    border-radius: 10px;
+    font-weight: 500;
+    padding: 7px 30px;
+    background-color: var(--darkblue);
+    color: white;
+    font-size: 1.125em;
+}
+
+.contactform-alert{
+    background-color: var(--alertBackground);
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 1em;
+    color: black;
+
 }

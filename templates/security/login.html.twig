@@ -1,42 +1,41 @@
+{% extends 'admin_base.html.twig' %}
 
 
-{% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+{% block main %}
+    <form class="adminlogin-wrap" method="post" ng-controller="adminLogin" action="{{ path('app_login') }}">
+        <div class="contactform-line"></div>
+        <div class="contactform-contentWrap">
+            {% if error %}
+                <div class="contactform-alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, 
-            <a href="{{ path('adminpanel') }}">Admin Panel</a>
-            <br>
-            <a href="{{ path('app_logout') }}">Logout</a>
+            {% if not app.user %}
+            <div class="contactform-title">
+                <h1>Admin panel</h1>
+                <h3>Un endroit pour gérer les blocs de site et les contacts</h3>
+            </div>
+            <div class="contactform-input">
+                <label for="inputUsername">Username</label>
+                <input style="max-width: none;" type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Admin" autocomplete="username" required autofocus>
+            </div>
+            <div class="contactform-input">
+                {% verbatim %}
+                <label for="inputPassword">Password</label>
+                <input style="max-width: none;" type="{{ passwordType }}" name="password" id="inputPassword" class="form-control" placeholder="qwerty123" autocomplete="current-password" required>
+                <div style="margin-top: 5px;"class="contactform-checkbox">
+                    <input type="checkbox" ng-click="checkSwipe()" ng-model="checkbox">        
+                    <p>Show password</p>
+                </div>
+                {% endverbatim %}
+            </div>
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+            <div class="contactform-submit">
+                <button class="hover-btn" type="submit">Sign In</button>
+                <a class="hover-opacity" href="{{ path('home') }}">Si vous n'êtes pas administrateur, vous pouvez retourner sur le site</a>
+            </div>
+            {% endif %}
         </div>
-    {% endif %}
-
-{% if not app.user %}
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Username</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="_remember_me"> Remember me
-        </label>
-    </div>
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
-
-{% endif %}
-
+    </form>
 {% endblock %}

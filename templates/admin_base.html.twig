@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AdminController">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('style/main.css') }}">
+    <title>Agrometal - Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
+    <script src="{{ asset('JS/admin_controller.js') }}"></script>
+    {% block head %}{% endblock %}
+    <script src="{{ asset('JS/additional_function.js') }}"></script>
+</head>
+<body>
+    <main>
+        {% block main %}Default Main{% endblock %}
+    </main>
+</body>
+</html>

@@ -124,7 +124,7 @@ class AgrometalController extends AbstractController
 
         $email = (new TemplatedEmail())
             ->from($mail)
-            ->to('marieblanchard7@laposte.net')
+            ->to('i.e 58910a6e7f-cdd005+1@inbox.mailtrap.io')
             ->subject($nom)
             ->htmlTemplate('email/contact.html.twig')
             ->context([
