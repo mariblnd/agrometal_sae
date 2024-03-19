@@ -2,7 +2,10 @@
 
 
 
-{% block body %}
+{% extends 'admin_base.html.twig' %}
+
+{% block main %}
+
     <h1>Les Équipements</h1>
 
     <table class="table">
@@ -41,6 +44,7 @@
 
     <a href="{{ path('app_equipments_new') }}">Create new</a>
     <a href="../equipments1">équipement1</a>
+    <a href="../equipments2">équipement2</a>
 
    
 {% endblock %}

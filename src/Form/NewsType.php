@@ -15,30 +15,11 @@ class NewsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre', TextType::class)
+            ->add('title', TextType::class)
             ->add('description', TextType::class)
             ->add('date', TextType::class)
-            ->add('nombre1', IntegerType::class, [
-                'required' => false,
-            ])
-            ->add('texte1', TextType::class, [
-                'required' => false,
-            ])
-            ->add('nombre2', IntegerType::class, [
-                'required' => false,
-            ])
-            ->add('texte2', TextType::class, [
-                'required' => false,
-            ])
-            ->add('nombre3', IntegerType::class, [
-                'required' => false,
-            ])
-            ->add('texte3', TextType::class, [
-                'required' => false,
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Valider',
-            ]);
+            
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

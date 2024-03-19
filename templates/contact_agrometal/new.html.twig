@@ -1,11 +1,13 @@
+{% extends 'admin_base.html.twig' %}
 
 
-{% block title %}New ContactAgrometal{% endblock %}
-
-{% block body %}
+{% block main %}
     <h1>Create new ContactAgrometal</h1>
 
-    {{ include('contact_agrometal/_form.html.twig') }}
+    {{ include('contact_agrometal/_form.html.twig', {
+        'button_label': 'Ajouter',
+        'form_action': path('app_contact_agrometal_new', {'id': contact_agrometal.id})
+    }) }}
 
     <a href="{{ path('app_contact_agrometal_index') }}">back to list</a>
 {% endblock %}

@@ -24,6 +24,7 @@ use App\Entity\EquipmentsMinusTwo;
 use App\Entity\MapRegions;
 use App\Entity\MediaSocial;
 use App\Entity\PointCarte;
+use App\Entity\WorkContact;
 
 
 //FORM Things
@@ -56,6 +57,7 @@ class AgrometalController extends AbstractController
 
 
     $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll(); 
+    $work_contact_bdd = $entityManager->getRepository(WorkContact::class)->findAll(); 
 
     $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
 
@@ -89,6 +91,7 @@ class AgrometalController extends AbstractController
         'news_number_bdd' => $news_number_bdd,
         'regions_bdd' => $regions_bdd,
         'point_map_bdd' => $point_map_bdd,
+        'work_contact_bdd'=> $work_contact_bdd,
     ]);
 }
 
@@ -146,6 +149,7 @@ class AgrometalController extends AbstractController
         $referencesFile = $references ? $references->getJsonFile() : null;
 
         $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll(); 
+        $work_contact_bdd = $entityManager->getRepository(WorkContact::class)->findAll(); 
 
         $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
 
@@ -162,6 +166,7 @@ class AgrometalController extends AbstractController
             'socialmedia_bdd' => $socialmedia_bdd,
             'entreprise_bdd' => $entreprise_bdd,
             'point_map_bdd' => $point_map_bdd,
+            'work_contact_bdd'=> $work_contact_bdd,
         ]);
     }
 
@@ -172,6 +177,7 @@ class AgrometalController extends AbstractController
          $repository = $entityManager->getRepository(AgromeetalJSON::class);
      
          $contacts = $repository->findOneBy(['json_file_name' => 'agrometal_contacts']);
+         $work_contact_bdd = $entityManager->getRepository(WorkContact::class)->findAll(); 
          $equipements = $repository->findOneBy(['json_file_name' => 'equipments']);
      
          $contactsFile = $contacts ? $contacts->getJsonFile() : null;
@@ -192,6 +198,7 @@ class AgrometalController extends AbstractController
             'equipments_min2_bdd' => $equipments_min2_bdd,
             'contact_bdd' => $contact_bdd,
             'socialmedia_bdd' => $socialmedia_bdd,
+            'work_contact_bdd'=> $work_contact_bdd,
          ]);
      }
      
@@ -216,6 +223,7 @@ class AgrometalController extends AbstractController
          $referencesFile = $references ? $references->getJsonFile() : null;
 
          $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll(); 
+         $work_contact_bdd = $entityManager->getRepository(WorkContact::class)->findAll(); 
 
         $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
 
@@ -249,6 +257,7 @@ class AgrometalController extends AbstractController
             'news_number_bdd' => $news_number_bdd,
             'regions_bdd' => $regions_bdd,
             'point_map_bdd' => $point_map_bdd,
+            'work_contact_bdd'=> $work_contact_bdd,
          ]);
      }
         
@@ -270,7 +279,8 @@ class AgrometalController extends AbstractController
     $newsFile = $news ? $news->getJsonFile() : null;
     $referencesFile = $references ? $references->getJsonFile() : null;
 
-    $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll(); 
+    $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll();
+    $work_contact_bdd = $entityManager->getRepository(WorkContact::class)->findAll();    
 
     $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
 
@@ -305,6 +315,7 @@ class AgrometalController extends AbstractController
         'news_number_bdd' => $news_number_bdd,
         'regions_bdd' => $regions_bdd,
         'point_map_bdd' => $point_map_bdd,
+        'work_contact_bdd'=> $work_contact_bdd,
     ]);
 }
 

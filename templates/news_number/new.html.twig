@@ -1,11 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}New NewsNumber{% endblock %}
-
-{% block body %}
+{% block main %}
     <h1>Create new NewsNumber</h1>
 
-    {{ include('news_number/_form.html.twig') }}
+    {{ include('news_number/_form.html.twig', {
+        'button_label': 'Ajouter',
+        'form_action': path('app_news_number_new', {'id': news_number.id})
+    }) }}
 
     <a href="{{ path('app_news_number_index') }}">back to list</a>
 {% endblock %}

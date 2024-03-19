@@ -1,0 +1,38 @@
+{% extends 'admin_base.html.twig' %}
+
+
+
+{% block main %}
+    <h1>WorkContact</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ work_contact.id }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ work_contact.mail }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ work_contact.name }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ work_contact.title }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ work_contact.telephone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_work_contact_index') }}">back to list</a>
+
+    <a href="{{ path('app_work_contact_edit', {'id': work_contact.id}) }}">edit</a>
+
+    {{ include('work_contact/_delete_form.html.twig') }}
+{% endblock %}

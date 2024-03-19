@@ -1,11 +1,13 @@
 
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}Edit Entreprise{% endblock %}
-
-{% block body %}
+{% block main %}
     <h1>Edit Entreprise</h1>
 
-    {{ include('entreprise/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('entreprise/_form.html.twig', {
+        'button_label': 'Update',
+        'form_action': path('app_entreprise_edit', {'id': entreprise.id})
+    }) }}
 
     <a href="{{ path('app_entreprise_index') }}">back to list</a>
 

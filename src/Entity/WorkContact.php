@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\MediaSocialRepository;
+use App\Repository\WorkContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\ContactAgrometal;
 
-#[ORM\Entity(repositoryClass: MediaSocialRepository::class)]
-class MediaSocial
+#[ORM\Entity(repositoryClass: WorkContactRepository::class)]
+class WorkContact
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -14,50 +15,46 @@ class MediaSocial
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $link = null;
+    private ?string $mail = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column]
-    private ?bool $active = null;
+    #[ORM\Column(length: 255)]
+    private ?string $telephone = null;
 
     #[ORM\ManyToOne(targetEntity: ContactAgrometal::class)]
     #[ORM\JoinColumn(name: 'contact_id', referencedColumnName: 'id')]
     private ?ContactAgrometal $contact = null;
-
-    #[ORM\ManyToOne(targetEntity: Entreprise::class)]
-    #[ORM\JoinColumn(name: 'entreprise_id', referencedColumnName: 'id')]
-    private ?Entreprise $entreprise = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLink(): ?string
+    public function getMail(): ?string
     {
-        return $this->link;
+        return $this->mail;
     }
 
-    public function setLink(string $link): static
+    public function setMail(string $mail): static
     {
-        $this->link = $link;
+        $this->mail = $mail;
 
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getName(): ?string
     {
-        return $this->image;
+        return $this->name;
     }
 
-    public function setImage(string $image): static
+    public function setName(string $name): static
     {
-        $this->image = $image;
+        $this->name = $name;
 
         return $this;
     }
@@ -74,29 +71,16 @@ class MediaSocial
         return $this;
     }
 
-    public function isActive(): ?bool
+    public function getTelephone(): ?string
     {
-        return $this->active;
+        return $this->telephone;
     }
 
-    public function setActive(bool $active): static
+    public function setTelephone(string $telephone): static
     {
-        $this->active = $active;
+        $this->telephone = $telephone;
 
         return $this;
-    }
-
-    public function getEntreprise(): ?Entreprise
-    {
-        return $this->entreprise;
-    }
-
-    public function setEntreprise(?Entreprise $entreprise): static
-    {
-        $this->entreprise = $entreprise;
-
-        return $this;
-
     }
 
     public function getContact(): ?ContactAgrometal

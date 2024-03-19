@@ -2,24 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\News;
-use App\Entity\NewsNumber;
+use App\Entity\ContactAgrometal;
+use App\Entity\WorkContact;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class NewsNumberType extends AbstractType
+class WorkContactType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title_number')
-            ->add('active')
-            ->add('number')
-            ->add('news', EntityType::class, [
-                'class' => News::class,
-                'choice_label' => 'title',
+            ->add('mail')
+            ->add('name')
+            ->add('title')
+            ->add('telephone')
+            ->add('contact', EntityType::class, [
+                'class' => ContactAgrometal::class,
+                'choice_label' => 'adress_title',
             ])
         ;
     }
@@ -27,7 +28,7 @@ class NewsNumberType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => NewsNumber::class,
+            'data_class' => WorkContact::class,
         ]);
     }
 }

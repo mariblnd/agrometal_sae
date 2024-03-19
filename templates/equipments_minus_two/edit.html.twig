@@ -1,11 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}Edit EquipmentsMinusTwo{% endblock %}
-
-{% block body %}
+{% block main %}
     <h1>Edit EquipmentsMinusTwo</h1>
 
-    {{ include('equipments_minus_two/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('equipments_minus_two/_form.html.twig', {
+        'button_label': 'Update',
+        'form_action': path('app_equipments_minus_two_edit', {'id': equipments_minus_two.id})
+    }) }}
 
     <a href="{{ path('app_equipments_minus_two_index') }}">back to list</a>
 

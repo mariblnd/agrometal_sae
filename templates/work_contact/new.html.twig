@@ -1,0 +1,14 @@
+{% extends 'admin_base.html.twig' %}
+
+
+
+{% block main %}
+    <h1>Create new WorkContact</h1>
+
+    {{ include('work_contact/_form.html.twig', {
+        'button_label': 'Ajouter',
+        'form_action': path('app_work_contact_new', {'id': work_contact.id})
+    }) }}
+
+    <a href="{{ path('app_work_contact_index') }}">back to list</a>
+{% endblock %}

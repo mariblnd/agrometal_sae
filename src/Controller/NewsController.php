@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\News;
-use App\Form\News1Type;
+use App\Form\NewsType;
 use App\Repository\NewsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +26,7 @@ class NewsController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $news = new News();
-        $form = $this->createForm(News1Type::class, $news);
+        $form = $this->createForm(NewsType::class, $news);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,7 +53,7 @@ class NewsController extends AbstractController
     #[Route('/{id}/edit', name: 'app_news_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, News $news, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(News1Type::class, $news);
+        $form = $this->createForm(NewsType::class, $news);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

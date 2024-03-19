@@ -1,11 +1,13 @@
 
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}New EquipmentsMinusOne{% endblock %}
-
-{% block body %}
+{% block main %}
     <h1>Create new EquipmentsMinusOne</h1>
 
-    {{ include('equipments_minus_one/_form.html.twig') }}
+    {{ include('equipments_minus_one/_form.html.twig', {
+        'button_label': 'Ajouter',
+        'form_action': path('app_equipments_minus_one_new', {'id': equipments_minus_one.id})
+    }) }}
 
     <a href="{{ path('app_equipments_minus_one_index') }}">back to list</a>
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block main %}
+    <h1>Edit WorkContact</h1>
+
+    {{ include('work_contact/_form.html.twig', {
+        'button_label': 'Update',
+        'form_action': path('app_work_contact_edit', {'id': work_contact.id})
+    }) }}
+
+    <a href="{{ path('app_work_contact_index') }}">back to list</a>
+
+    {{ include('work_contact/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,11 +1,14 @@
 
 
-{% block title %}Edit MediaSocial{% endblock %}
+{% extends 'admin_base.html.twig' %}
 
-{% block body %}
+{% block main %}
     <h1>Edit MediaSocial</h1>
 
-    {{ include('media_social/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('media_social/_form.html.twig', {
+        'button_label': 'Update',
+        'form_action': path('app_media_social_edit', {'id': media_social.id})
+    }) }}
 
     <a href="{{ path('app_media_social_index') }}">back to list</a>
 

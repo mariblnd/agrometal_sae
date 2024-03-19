@@ -1,11 +1,13 @@
 
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}New MediaSocial{% endblock %}
-
-{% block body %}
+{% block main %}
     <h1>Create new MediaSocial</h1>
 
-    {{ include('media_social/_form.html.twig') }}
+    {{ include('media_social/_form.html.twig', {
+        'button_label': 'Ajouter',
+        'form_action': path('app_media_social_new', {'id': media_social.id})
+    }) }}
 
     <a href="{{ path('app_media_social_index') }}">back to list</a>
 {% endblock %}

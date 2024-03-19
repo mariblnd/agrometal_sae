@@ -1,8 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}News index{% endblock %}
-
-{% block body %}
+{% block main %}
     <h1>News index</h1>
 
     <table class="table">
@@ -36,4 +34,5 @@
     </table>
 
     <a href="{{ path('app_news_new') }}">Create new</a>
+    <a href="../newsnumber">Nombres illustrant la news</a>
 {% endblock %}

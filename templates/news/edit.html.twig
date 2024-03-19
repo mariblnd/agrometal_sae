@@ -1,11 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
-{% block title %}Edit News{% endblock %}
-
-{% block body %}
+{% block main %}
     <h1>Edit News</h1>
 
-    {{ include('news/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('news/_form.html.twig', {
+        'button_label': 'Update',
+        'form_action': path('app_news_edit', {'id': news.id})
+    }) }}
 
     <a href="{{ path('app_news_index') }}">back to list</a>
 
