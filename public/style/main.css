@@ -198,7 +198,7 @@ header button{
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    gap: 150px;
+    justify-content: space-between;
 }
 
 .news-title{
@@ -237,6 +237,7 @@ header button{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-width: 750px;
 }
 
 .news-description-text{
@@ -394,6 +395,8 @@ header button{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .mainpage-equipement-types-elem{
@@ -950,4 +953,22 @@ footer{
     font-size: 1em;
     color: black;
 
+}
+
+@media screen and (max-width: 1490px) {
+    .optimization-box-1440{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    header{
+        padding: 0 50px;
+    }
+    .news-content{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .mainpage-equipement-types-wrap{
+        gap: 35px;
+        justify-content: center;
+    }
 }

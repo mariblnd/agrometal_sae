@@ -33,6 +33,13 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
+// JSON
+
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
 
 class AgrometalController extends AbstractController
 {
@@ -40,7 +47,10 @@ class AgrometalController extends AbstractController
 
     public function homepageController(EntityManagerInterface $entityManager, Request $request)
 {
-    
+    $encoders = [new XmlEncoder(), new JsonEncoder()];     //
+    $normalizers = [new ObjectNormalizer()];               //  Transfer to JSON
+    $serializer = new Serializer($normalizers, $encoders); //
+
     $repository = $entityManager->getRepository(AgromeetalJSON::class);
 
     $contacts = $repository->findOneBy(['json_file_name' => 'agrometal_contacts']);
@@ -62,7 +72,9 @@ class AgrometalController extends AbstractController
     $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
 
     $entreprise_bdd = $entityManager->getRepository(Entreprise::class)->findAll();
+    $json_entreprise_bdd = $serializer->serialize($entreprise_bdd, 'json');
     $point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+    $json_point_map_bdd = $serializer->serialize($point_map_bdd, 'json');
 
     $equipments_bdd = $entityManager->getRepository(Equipments::class)->findAll();
     $equipements_min1_bdd = $entityManager->getRepository(EquipmentsMinusOne::class)->findAll(); 
@@ -75,14 +87,14 @@ class AgrometalController extends AbstractController
 
     return $this->render('homepage.html.twig', [
 
-        'contactsFile' => $contactsFile,
-        'equipementsFile' => $equipementsFile,
+        // 'contactsFile' => $contactsFile,
+        // 'equipementsFile' => $equipementsFile,
         'mapFile' => $mapFile,
-        'newsFile' => $newsFile,
-        'referencesFile' => $referencesFile,
+        // 'newsFile' => $newsFile,
+        // 'referencesFile' => $referencesFile,
 
         'contact_bdd' => $contact_bdd,
-        'entreprise_bdd' => $entreprise_bdd,
+        'entreprise_bdd' => $json_entreprise_bdd,
         'socialmedia_bdd' => $socialmedia_bdd,
         'equipments_bdd' => $equipments_bdd,
         'equipements_min1_bdd' => $equipements_min1_bdd,
@@ -90,7 +102,7 @@ class AgrometalController extends AbstractController
         'news_bdd' => $news_bdd,
         'news_number_bdd' => $news_number_bdd,
         'regions_bdd' => $regions_bdd,
-        'point_map_bdd' => $point_map_bdd,
+        'point_map_bdd' => $json_point_map_bdd,
         'work_contact_bdd'=> $work_contact_bdd,
     ]);
 }
@@ -194,8 +206,8 @@ class AgrometalController extends AbstractController
              'contactsFile' => $contactsFile,
              'equipementsFile' => $equipementsFile,
              'equipments_bdd' => $equipments_bdd,
-            'equipments_min1_bdd' => $equipments_min1_bdd,
-            'equipments_min2_bdd' => $equipments_min2_bdd,
+            'equipments_min1_bdd' => $equipements_min1_bdd,
+            'equipments_min2_bdd' => $equipements_min2_bdd,
             'contact_bdd' => $contact_bdd,
             'socialmedia_bdd' => $socialmedia_bdd,
             'work_contact_bdd'=> $work_contact_bdd,

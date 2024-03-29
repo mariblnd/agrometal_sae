@@ -7,16 +7,18 @@
                     <h3>Contacts</h3>
                 </a>
                 <ul>
-                    <li>Tél: {{ contactsFile.telephone }}</li>
-                    <li>E-Mail: {{ contactsFile.email }}</li>
-                    <li>Adress: {{ contactsFile.adress }}</li>
+                    <li>Tél: {{ contact_bdd[0].telephone }}</li>
+                    <li>E-Mail: {{ contact_bdd[0].email }}</li>
+                    <li>Adress: {{ contact_bdd[0].adress }}</li>
                 </ul>
             </div>
             <div class="footer-category-line">
                 <a href="#" class="hover-opacity"><h3>Equipement</h3></a>
                 <ul>
-                    {% for item in equipementsFile %}
-                        <a href='#'><li class='capitaliste hover-opacity'>{{ item.title }}</li></a>
+                    {% for item in equipments_bdd %}
+                        {% if item.preview %}
+                            <a href='#'><li class='capitaliste hover-opacity'>{{ item.title }}</li></a>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>
@@ -29,13 +31,13 @@
             </div>
         </div>
         <div class="footer-socialmedia-wrap">
-            {% for item in contactsFile.social_media %}
-                {% if item.active %}
+            {% for item in socialmedia_bdd %}
+                {% if item.contact.id == 2 and item.active %}
                     {% set asset_location = 'images/social_media/' ~ item.image %}
                     <a href='{{ item.link }}'><img src='{{ asset(asset_location) }}' alt='{{ item.title }}'></a>
                 {% endif %}
             {% endfor %}
-            <a href='mailto:{{ contactsFile.email }}'><img width='50px' height='50px' src='{{ asset('images/social_media/mail.svg') }}' alt='Envoyer un courrier'></a>
+            <a href='mailto:{{ contact_bdd[0].email }}'><img width='50px' height='50px' src='{{ asset('images/social_media/mail.svg') }}' alt='Envoyer un courrier'></a>
         </div>
     </div>
     <div class="footer-credits">

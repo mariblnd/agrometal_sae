@@ -4,14 +4,14 @@
         <div class="news-title">
             <h2>Dernières nouvelles</h2>
             <div class="news-eventname">
-                <h3>{{ newsFile.title }}</h3>
-                <p>{{ newsFile.date }}</p>
+                <h3>{{ news_bdd[0].title }}</h3>
+                <p>{{ news_bdd[0].date }}</p>
             </div>
         </div>
         <div class="news-description">
-            <p class="news-description-text">{{ newsFile.description }}</p>
+            <p class="news-description-text">{{ news_bdd[0].description }}</p>
             <div class="news-chiffres">
-                {% for item in newsFile.chiffres %}
+                {% for item in news_number_bdd %}
                     {% if item.active %}
                         <div class="chiffres-element white">
                             <h4>{{ item.number }}</h4>

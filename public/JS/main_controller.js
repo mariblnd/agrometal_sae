@@ -38,7 +38,11 @@ myApp.controller('nosReferences', function($scope,$timeout) {
     $scope.selected_client = 0;
     $scope.socialmedia_color = '';
 
-    $scope.data = data;
+    $scope.data = JSON.parse(map_points);
+    console.log($scope.data);
+
+    $scope.data2 = JSON.parse(data);
+    console.log($scope.data2);
     $scope.data_regions = data_regions;
 
     $scope.map_id_cache = "map_x5F_";
@@ -68,8 +72,9 @@ myApp.controller('nosReferences', function($scope,$timeout) {
             if (svgDoc) {
                 angular.forEach($scope.data_regions.regions, function(value) {
                     var svgElement = svgDoc.getElementById($scope.map_id_cache + value.title);
-                    console.log($scope.data[$scope.selected_client].map_point.region);
-                    if (value.title === $scope.data[$scope.selected_client].map_point.region) {
+                    console.log($scope.data[$scope.selected_client].region);
+
+                    if (value.title === $scope.data[$scope.selected_client].region) {
                         svgElement.style.fill = '#0059B5';
                     } else {
                         svgElement.style.fill = '#004388';

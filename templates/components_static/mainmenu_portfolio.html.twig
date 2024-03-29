@@ -1,5 +1,7 @@
 <script>
-    var data = {{ referencesFile|json_encode|raw }};
+    var data = {{ entreprise_bdd|json_encode|raw }};
+    var map_points = {{ point_map_bdd|json_encode|raw }};
+    // var map_points = JSON.parse('{{ point_map_bdd|raw }}');
     var data_regions = {{ mapFile|json_encode|raw}};
 </script>
 <div class="background-gray" ng-controller="nosReferences" id="referencesControllerDiv">
@@ -12,29 +14,29 @@
             </div>
             <div class="mainpage-references-wrap">
                 <div>
-                    <button ng-click="changeSelectedClient(item.id, item.map_point.region)" ng-repeat="item in data" style="margin-top: {{ item.map_point.margin_top }}px; margin-left: {{ item.map_point.margin_left }}px;" class="mainpage-references-btn" ng-style="getMapBtnActive(item.id)"></button>
+                    <button ng-click="changeSelectedClient(item.entreprise.id, item.region)" ng-repeat="item in map_points" style="margin-top: {{ item.margin_top }}px; margin-left: {{ item.margin_left }}px;" class="mainpage-references-btn" ng-style="getMapBtnActive(item.item.entreprise.id)"></button>
                     <object class="mainpage-references-map" type="image/svg+xml" data="images/references/franceMap.svg" id="references-map"></object>
                 </div>
                 <div class="mainpage-references-companywrap">
                     <div class="mainpage-references-namewrap">
-                        <img ng-src="{{ image_dir_logo }}{{ data[selected_client].logo }}" alt="Client logo">
+                        <img ng-src="{{ image_dir_logo }}{{ data[selected_client].entreprise.logo }}" alt="Client logo">
                         <div class="mainpage-references-name">
-                            <h3>{{ data[selected_client].company_name }}</h3>
-                            <p>{{ data[selected_client].description }}</p>
+                            <h3>{{ data[selected_client].entreprise.company_name }}</h3>
+                            <p>{{ data[selected_client].entreprise.description }}</p>
                         </div>
                     </div>
                     <ul class="mainpage-references-infowrap">
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Date de création</h4></li>
-                            <li><p>{{ data[selected_client].creation_date }}</p></li>
+                            <li><p>{{ data[selected_client].entreprise.creation_date }}</p></li>
                         </ul>
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Nos partenaires depuis</h4></li>
-                            <li><p>{{ data[selected_client].partner_from }}</p></li>
+                            <li><p>{{ data[selected_client].entreprise.partner_from }}</p></li>
                         </ul>
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Site officiel</h4></li>
-                            <li><p><a class="hover-opacity" href="https://{{ data[selected_client].website }}/">{{ data[selected_client].website }}</a></p></li>
+                            <li><p><a class="hover-opacity" href="https://{{ data[selected_client].entreprise.website }}/">{{ data[selected_client].entreprise.website }}</a></p></li>
                         </ul>
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Réseaux sociaux</h4></li>
