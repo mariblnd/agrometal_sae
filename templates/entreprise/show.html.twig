@@ -1,6 +1,8 @@
 {% extends 'admin_base.html.twig' %}
 
+{% block title %}Edit Entreprise{% endblock %}
 {% block main %}
+
     <h1>Entreprise</h1>
 
     <table class="table">
@@ -36,6 +38,18 @@
             <tr>
                 <th>Creation_date</th>
                 <td>{{ entreprise.creationDate }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ entreprise.region }}</td>
+            </tr>
+            <tr>
+                <th>Margin_top</th>
+                <td>{{ entreprise.marginTop }}</td>
+            </tr>
+            <tr>
+                <th>Margin_left</th>
+                <td>{{ entreprise.marginLeft }}</td>
             </tr>
         </tbody>
     </table>

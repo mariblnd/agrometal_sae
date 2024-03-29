@@ -1,7 +1,5 @@
 <script>
     var data = {{ entreprise_bdd|json_encode|raw }};
-    var map_points = {{ point_map_bdd|json_encode|raw }};
-    // var map_points = JSON.parse('{{ point_map_bdd|raw }}');
     var data_regions = {{ mapFile|json_encode|raw}};
 </script>
 <div class="background-gray" ng-controller="nosReferences" id="referencesControllerDiv">

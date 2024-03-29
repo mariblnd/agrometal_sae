@@ -25,14 +25,6 @@ class MediaSocial
     #[ORM\Column]
     private ?bool $active = null;
 
-    #[ORM\ManyToOne(targetEntity: ContactAgrometal::class)]
-    #[ORM\JoinColumn(name: 'contact_id', referencedColumnName: 'id')]
-    private ?ContactAgrometal $contact = null;
-
-    #[ORM\ManyToOne(targetEntity: Entreprise::class)]
-    #[ORM\JoinColumn(name: 'entreprise_id', referencedColumnName: 'id')]
-    private ?Entreprise $entreprise = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -86,28 +78,4 @@ class MediaSocial
         return $this;
     }
 
-    public function getEntreprise(): ?Entreprise
-    {
-        return $this->entreprise;
-    }
-
-    public function setEntreprise(?Entreprise $entreprise): static
-    {
-        $this->entreprise = $entreprise;
-
-        return $this;
-
-    }
-
-    public function getContact(): ?ContactAgrometal
-    {
-        return $this->contact;
-    }
-
-    public function setContact(?ContactAgrometal $contact): static
-    {
-        $this->contact = $contact;
-
-        return $this;
-    }
 }

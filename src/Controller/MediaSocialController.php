@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\MediaSocial;
-use App\Form\MediaSocialType;
+use App\Form\MediaSocial1Type;
 use App\Repository\MediaSocialRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +26,7 @@ class MediaSocialController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $mediaSocial = new MediaSocial();
-        $form = $this->createForm(MediaSocialType::class, $mediaSocial);
+        $form = $this->createForm(MediaSocial1Type::class, $mediaSocial);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -53,7 +53,7 @@ class MediaSocialController extends AbstractController
     #[Route('/{id}/edit', name: 'app_media_social_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, MediaSocial $mediaSocial, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(MediaSocialType::class, $mediaSocial);
+        $form = $this->createForm(MediaSocial1Type::class, $mediaSocial);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

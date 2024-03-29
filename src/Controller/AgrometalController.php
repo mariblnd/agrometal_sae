@@ -73,8 +73,8 @@ class AgrometalController extends AbstractController
 
     $entreprise_bdd = $entityManager->getRepository(Entreprise::class)->findAll();
     $json_entreprise_bdd = $serializer->serialize($entreprise_bdd, 'json');
-    $point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
-    $json_point_map_bdd = $serializer->serialize($point_map_bdd, 'json');
+    /*$point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+    $json_point_map_bdd = $serializer->serialize($point_map_bdd, 'json');*/
 
     $equipments_bdd = $entityManager->getRepository(Equipments::class)->findAll();
     $equipements_min1_bdd = $entityManager->getRepository(EquipmentsMinusOne::class)->findAll(); 
@@ -102,7 +102,7 @@ class AgrometalController extends AbstractController
         'news_bdd' => $news_bdd,
         'news_number_bdd' => $news_number_bdd,
         'regions_bdd' => $regions_bdd,
-        'point_map_bdd' => $json_point_map_bdd,
+        //'point_map_bdd' => $json_point_map_bdd,
         'work_contact_bdd'=> $work_contact_bdd,
     ]);
 }
@@ -166,7 +166,9 @@ class AgrometalController extends AbstractController
         $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
 
         $entreprise_bdd = $entityManager->getRepository(Entreprise::class)->findAll();
-        $point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+        
+        /*$point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+        $json_point_map_bdd = $serializer->serialize($point_map_bdd, 'json');*/
 
         return $this->render('references.html.twig',[
             'contactsFile' => $contactsFile,
@@ -177,7 +179,7 @@ class AgrometalController extends AbstractController
             'contact_bdd' => $contact_bdd,
             'socialmedia_bdd' => $socialmedia_bdd,
             'entreprise_bdd' => $entreprise_bdd,
-            'point_map_bdd' => $point_map_bdd,
+            //'point_map_bdd' => $point_map_bdd,
             'work_contact_bdd'=> $work_contact_bdd,
         ]);
     }
@@ -240,7 +242,8 @@ class AgrometalController extends AbstractController
         $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
 
         $entreprise_bdd = $entityManager->getRepository(Entreprise::class)->findAll();
-        $point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+       /*$point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+    $json_point_map_bdd = $serializer->serialize($point_map_bdd, 'json');*/
 
         $equipments_bdd = $entityManager->getRepository(Equipments::class)->findAll();
         $equipements_min1_bdd = $entityManager->getRepository(EquipmentsMinusOne::class)->findAll(); 
@@ -268,7 +271,7 @@ class AgrometalController extends AbstractController
             'news_bdd' => $news_bdd,
             'news_number_bdd' => $news_number_bdd,
             'regions_bdd' => $regions_bdd,
-            'point_map_bdd' => $point_map_bdd,
+            //'point_map_bdd' => $point_map_bdd,
             'work_contact_bdd'=> $work_contact_bdd,
          ]);
      }
@@ -297,7 +300,8 @@ class AgrometalController extends AbstractController
     $socialmedia_bdd = $entityManager->getRepository(MediaSocial::class)->findAll();
 
     $entreprise_bdd = $entityManager->getRepository(Entreprise::class)->findAll();
-    $point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+    /*$point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
+    $json_point_map_bdd = $serializer->serialize($point_map_bdd, 'json');*/
 
     $equipments_bdd = $entityManager->getRepository(Equipments::class)->findAll();
     $equipements_min1_bdd = $entityManager->getRepository(EquipmentsMinusOne::class)->findAll(); 
@@ -326,7 +330,7 @@ class AgrometalController extends AbstractController
         'news_bdd' => $news_bdd,
         'news_number_bdd' => $news_number_bdd,
         'regions_bdd' => $regions_bdd,
-        'point_map_bdd' => $point_map_bdd,
+        //'point_map_bdd' => $point_map_bdd,
         'work_contact_bdd'=> $work_contact_bdd,
     ]);
 }
