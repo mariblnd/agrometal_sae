@@ -43,9 +43,23 @@ class Entreprise
     #[ORM\Column]
     private ?int $margin_left = null;
 
-    #[ORM\ManyToOne(targetEntity: MediaSocial::class)]
-    #[ORM\JoinColumn(name: 'socialmedia', referencedColumnName: 'id')]
-    private ?MediaSocial $socialmedia = null;
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $instagramActive = false;
+    
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $instagram = null;
+    
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $linkedinActive = false;
+    
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $linkedin = null;
+    
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $facebookActive = false;
+    
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $facebook = null;
 
 
     public function getId(): ?int
@@ -173,16 +187,76 @@ class Entreprise
         return $this;
     }
 
-    public function getSocialMedia(): ?MediaSocial
-    {
-        return $this->socialmedia;
-    }
+    public function getInstagramActive(): ?bool
+{
+    return $this->instagramActive;
+}
 
-    public function setSocialMedia(?MediaSocial $socialmedia): static
-    {
-        $this->socialmedia = $socialmedia;
+public function getInstagram(): ?string
+{
+    return $this->instagram;
+}
 
-        return $this;
+public function getLinkedinActive(): ?bool
+{
+    return $this->linkedinActive;
+}
 
-    }
+public function getLinkedin(): ?string
+{
+    return $this->linkedin;
+}
+
+public function getFacebookActive(): ?bool
+{
+    return $this->facebookActive;
+}
+
+public function getFacebook(): ?string
+{
+    return $this->facebook;
+}
+
+// Setters
+public function setInstagramActive(?bool $instagramActive): self
+{
+    $this->instagramActive = $instagramActive;
+
+    return $this;
+}
+
+public function setInstagram(?string $instagram): self
+{
+    $this->instagram = $instagram;
+
+    return $this;
+}
+
+public function setLinkedinActive(?bool $linkedinActive): self
+{
+    $this->linkedinActive = $linkedinActive;
+
+    return $this;
+}
+
+public function setLinkedin(?string $linkedin): self
+{
+    $this->linkedin = $linkedin;
+
+    return $this;
+}
+
+public function setFacebookActive(?bool $facebookActive): self
+{
+    $this->facebookActive = $facebookActive;
+
+    return $this;
+}
+
+public function setFacebook(?string $facebook): self
+{
+    $this->facebook = $facebook;
+
+    return $this;
+}
 }

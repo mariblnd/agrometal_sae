@@ -1,8 +1,6 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block title %}Edit Entreprise{% endblock %}
 {% block main %}
-
     <h1>Entreprise</h1>
 
     <table class="table">
@@ -50,6 +48,30 @@
             <tr>
                 <th>Margin_left</th>
                 <td>{{ entreprise.marginLeft }}</td>
+            </tr>
+            <tr>
+                <th>InstagramActive</th>
+                <td>{{ entreprise.instagramActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Instagram</th>
+                <td>{{ entreprise.instagram }}</td>
+            </tr>
+            <tr>
+                <th>LinkedinActive</th>
+                <td>{{ entreprise.linkedinActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Linkedin</th>
+                <td>{{ entreprise.linkedin }}</td>
+            </tr>
+            <tr>
+                <th>FacebookActive</th>
+                <td>{{ entreprise.facebookActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Facebook</th>
+                <td>{{ entreprise.facebook }}</td>
             </tr>
         </tbody>
     </table>

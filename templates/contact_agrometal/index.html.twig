@@ -1,19 +1,23 @@
-
-
 {% extends 'admin_base.html.twig' %}
 
 {% block main %}
-    <h1>Contact d'Agrometal</h1>
+    <h1>ContactAgrometal index</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Email</th>
-                <th>Adresse</th>
-                <th>Téléphone</th>
-                <th>Lieu</th>
-                <th>Actions</th>
+                <th>Adress</th>
+                <th>Telephone</th>
+                <th>Adress_title</th>
+                <th>InstagramActive</th>
+                <th>Instagram</th>
+                <th>LinkedinActive</th>
+                <th>Linkedin</th>
+                <th>FacebookActive</th>
+                <th>Facebook</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +28,12 @@
                 <td>{{ contact_agrometal.adress }}</td>
                 <td>{{ contact_agrometal.telephone }}</td>
                 <td>{{ contact_agrometal.adressTitle }}</td>
+                <td>{{ contact_agrometal.instagramActive ? 'Yes' : 'No' }}</td>
+                <td>{{ contact_agrometal.instagram }}</td>
+                <td>{{ contact_agrometal.linkedinActive ? 'Yes' : 'No' }}</td>
+                <td>{{ contact_agrometal.linkedin }}</td>
+                <td>{{ contact_agrometal.facebookActive ? 'Yes' : 'No' }}</td>
+                <td>{{ contact_agrometal.facebook }}</td>
                 <td>
                     <a href="{{ path('app_contact_agrometal_show', {'id': contact_agrometal.id}) }}">show</a>
                     <a href="{{ path('app_contact_agrometal_edit', {'id': contact_agrometal.id}) }}">edit</a>
@@ -31,13 +41,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="12">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('app_contact_agrometal_new') }}">Create new</a>
-    <a href="/adminpanel/socialmedia">Modifier les réseaux sociaux des contacts</a>
-    <a href="/adminpanel/workcontact">Modifier les contacts liés</a>
 {% endblock %}

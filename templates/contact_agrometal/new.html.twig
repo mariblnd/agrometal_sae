@@ -1,11 +1,10 @@
 {% extends 'admin_base.html.twig' %}
 
-
 {% block main %}
     <h1>Create new ContactAgrometal</h1>
 
-    {{ include('contact_agrometal/_form.html.twig', {
-        'button_label': 'Ajouter',
+    {{ include('entreprise/_form.html.twig', {
+        'button_label': 'Update',
         'form_action': path('app_contact_agrometal_new', {'id': contact_agrometal.id})
     }) }}
 

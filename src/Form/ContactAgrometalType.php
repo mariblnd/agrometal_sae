@@ -16,6 +16,12 @@ class ContactAgrometalType extends AbstractType
             ->add('adress')
             ->add('telephone')
             ->add('adress_title')
+            ->add('instagramActive')
+            ->add('instagram')
+            ->add('linkedinActive')
+            ->add('linkedin')
+            ->add('facebookActive')
+            ->add('facebook')
         ;
     }
 

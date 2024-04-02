@@ -1,11 +1,13 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block title %}Edit Entreprise{% endblock %}
 {% block main %}
-
     <h1>Create new Entreprise</h1>
 
-    {{ include('entreprise/_form.html.twig') }}
+    {{ include('entreprise/_form.html.twig', {
+        'button_label': 'Update',
+        'form_action': path('app_entreprise_new', {'id': entreprise.id})
+    }) }}
+
 
     <a href="{{ path('app_entreprise_index') }}">back to list</a>
 {% endblock %}

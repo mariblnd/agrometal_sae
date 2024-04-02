@@ -1,10 +1,6 @@
-
 {% extends 'admin_base.html.twig' %}
 
-{% block title %}Edit Entreprise{% endblock %}
-
 {% block main %}
-
     <h1>Entreprise index</h1>
 
     <table class="table">
@@ -21,6 +17,12 @@
                 <th>Region</th>
                 <th>Margin_top</th>
                 <th>Margin_left</th>
+                <th>InstagramActive</th>
+                <th>Instagram</th>
+                <th>LinkedinActive</th>
+                <th>Linkedin</th>
+                <th>FacebookActive</th>
+                <th>Facebook</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -38,6 +40,12 @@
                 <td>{{ entreprise.region }}</td>
                 <td>{{ entreprise.marginTop }}</td>
                 <td>{{ entreprise.marginLeft }}</td>
+                <td>{{ entreprise.instagramActive ? 'Yes' : 'No' }}</td>
+                <td>{{ entreprise.instagram }}</td>
+                <td>{{ entreprise.linkedinActive ? 'Yes' : 'No' }}</td>
+                <td>{{ entreprise.linkedin }}</td>
+                <td>{{ entreprise.facebookActive ? 'Yes' : 'No' }}</td>
+                <td>{{ entreprise.facebook }}</td>
                 <td>
                     <a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">show</a>
                     <a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">edit</a>
@@ -45,7 +53,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="12">no records found</td>
+                <td colspan="18">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

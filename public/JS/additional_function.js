@@ -1,4 +1,5 @@
 var contactFormStatus = true;
+var itemPopupStatus = true;
 
 function swithContactFormStatus() {
     var element = document.getElementById("contactForm");

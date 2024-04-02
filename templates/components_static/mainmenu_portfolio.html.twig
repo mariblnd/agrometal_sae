@@ -12,35 +12,42 @@
             </div>
             <div class="mainpage-references-wrap">
                 <div>
-                    <button ng-click="changeSelectedClient(item.entreprise.id, item.region)" ng-repeat="item in map_points" style="margin-top: {{ item.margin_top }}px; margin-left: {{ item.margin_left }}px;" class="mainpage-references-btn" ng-style="getMapBtnActive(item.item.entreprise.id)"></button>
+                    <button ng-click="changeSelectedClient(item.id, item.region)" ng-repeat="item in data" style="margin-top: {{ item.marginTop }}px; margin-left: {{ item.marginLeft }}px;" class="mainpage-references-btn" ng-style="getMapBtnActive(item.id)"></button>
                     <object class="mainpage-references-map" type="image/svg+xml" data="images/references/franceMap.svg" id="references-map"></object>
                 </div>
                 <div class="mainpage-references-companywrap">
                     <div class="mainpage-references-namewrap">
-                        <img ng-src="{{ image_dir_logo }}{{ data[selected_client].entreprise.logo }}" alt="Client logo">
+                        <img ng-src="{{ image_dir_logo }}{{ data[selected_client].logo }}" alt="Client logo">
                         <div class="mainpage-references-name">
-                            <h3>{{ data[selected_client].entreprise.company_name }}</h3>
-                            <p>{{ data[selected_client].entreprise.description }}</p>
+                            <h3>{{ data[selected_client].companyName }}</h3>
+                            <p>{{ data[selected_client].description }}</p>
                         </div>
                     </div>
                     <ul class="mainpage-references-infowrap">
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Date de création</h4></li>
-                            <li><p>{{ data[selected_client].entreprise.creation_date }}</p></li>
+                            <li><p>{{ data[selected_client].creationDate }}</p></li>
                         </ul>
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Nos partenaires depuis</h4></li>
-                            <li><p>{{ data[selected_client].entreprise.partner_from }}</p></li>
+                            <li><p>{{ data[selected_client].partnerFrom }}</p></li>
                         </ul>
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Site officiel</h4></li>
-                            <li><p><a class="hover-opacity" href="https://{{ data[selected_client].entreprise.website }}/">{{ data[selected_client].entreprise.website }}</a></p></li>
+                            <li><p><a class="hover-opacity" href="https://{{ data[selected_client].website }}/">{{ data[selected_client].website }}</a></p></li>
                         </ul>
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Réseaux sociaux</h4></li>
                             <ul class="mainpage-references-socialmedia">
-                            <li ng-repeat="item in data[selected_client].social_media" ng-if="item.active">
-                                <a href="{{ item.link }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}{{ item.image }}_cont.svg" alt="{{ item.title }}" width="50px" height="50px"></a></li>
+                                <li ng-if="data[selected_client].instagramActive">
+                                    <a href="{{ data[selected_client].instagram }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}instagram_cont.svg" alt="Instagram link" width="50px" height="50px"></a>
+                                </li>
+                                <li ng-if="data[selected_client].linkedinActive">
+                                    <a href="{{ data[selected_client].linkedin }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}linkedin_cont.svg" alt="LinkedIn link" width="50px" height="50px"></a>
+                                </li>
+                                <li ng-if="data[selected_client].facebookActive">
+                                    <a href="{{ data[selected_client].facebook }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}facebook_cont.svg" alt="Facebook link" width="50px" height="50px"></a>
+                                </li>
                             </ul>
                         </ul>
                     </ul>
@@ -52,7 +59,7 @@
                     <p class="mainpage-littlelink">Tous nos cleints</p>
                 </a>
                 <div class="mainpage-references-seemore-wrap fade" ng-show="isVisible">
-                    <a ng-repeat="item in data" ng-click="changeSelectedClient(item.id, item.map_point.region)" class="mainpage-references-seemore-item">
+                    <a ng-repeat="item in data" ng-click="changeSelectedClient(item.id, item.region)" class="mainpage-references-seemore-item">
                         <img ng-src="images/references/clients_logos/{{ item.logo}}" alt="{{ item.company_name }}">
                     </a>
                 </div>

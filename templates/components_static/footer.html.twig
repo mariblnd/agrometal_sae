@@ -31,12 +31,19 @@
             </div>
         </div>
         <div class="footer-socialmedia-wrap">
-            {% for item in socialmedia_bdd %}
-                {% if item.contact.id == 2 and item.active %}
-                    {% set asset_location = 'images/social_media/' ~ item.image %}
-                    <a href='{{ item.link }}'><img src='{{ asset(asset_location) }}' alt='{{ item.title }}'></a>
+                {% set asset_location = 'images/social_media/' %}
+                {% if contact_bdd[0].instagramActive %}
+                    {% set image_socialmedia = asset_location ~ "instagram.svg" %}
+                    <a href='{{ contact_bdd[0].instagram }}'><img src='{{ asset(image_socialmedia) }}' alt='Instagram link'></a>
                 {% endif %}
-            {% endfor %}
+                {% if contact_bdd[0].linkedinActive %}
+                    {% set image_socialmedia = asset_location ~ "linkedin.svg" %}
+                    <a href='{{ contact_bdd[0].linkedin }}'><img src='{{ asset(image_socialmedia) }}' alt='LinkedIn link'></a>
+                {% endif %}
+                {% if contact_bdd[0].facebookActive %}
+                    {% set image_socialmedia = asset_location ~ "facebook.svg" %}
+                    <a href='{{ contact_bdd[0].facebook }}'><img src='{{ asset(image_socialmedia) }}' alt='Facebook link'></a>
+                {% endif %}
             <a href='mailto:{{ contact_bdd[0].email }}'><img width='50px' height='50px' src='{{ asset('images/social_media/mail.svg') }}' alt='Envoyer un courrier'></a>
         </div>
     </div>

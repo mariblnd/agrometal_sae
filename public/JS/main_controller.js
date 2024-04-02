@@ -38,11 +38,9 @@ myApp.controller('nosReferences', function($scope,$timeout) {
     $scope.selected_client = 0;
     $scope.socialmedia_color = '';
 
-    $scope.data = JSON.parse(map_points);
+    $scope.data = JSON.parse(data);
     console.log($scope.data);
 
-    $scope.data2 = JSON.parse(data);
-    console.log($scope.data2);
     $scope.data_regions = data_regions;
 
     $scope.map_id_cache = "map_x5F_";
@@ -107,4 +105,56 @@ myApp.controller('nosReferences', function($scope,$timeout) {
     $timeout(function () {
         $scope.mapHighlightCheck();
     }, 50);
+});
+
+myApp.controller('equipementsPage', function($scope) {
+    $scope.data_categories = JSON.parse(data_categories);
+    console.log($scope.data_categories);
+
+    $scope.data_items = JSON.parse(data_items);
+    console.log($scope.data_items);
+
+    $scope.data_params = JSON.parse(data_params);
+    console.log($scope.data_params);
+
+    $scope.itemMenuStatus = [];
+
+    $scope.itemPopupStatus = false;
+
+    $scope.itemPopupInfo = $scope.data_items[0];
+    $scope.itemPopupParams = [];
+
+    $scope.refreshItemMenuStatus = function () {
+        $scope.data_categories.forEach(element => {
+            console.log("bool was created" + element);
+            $scope.itemMenuStatus.push(false);
+        });
+    }
+
+    $scope.updateItemMenuStatus = function(index){
+        $scope.itemMenuStatus[index] = !$scope.itemMenuStatus[index];
+    }
+
+    $scope.openItemPopup = function(index){
+       $scope.itemPopupStatus = true;
+       $scope.itemPopupParams = [];
+
+       $scope.data_items.forEach(element => {
+            if (element.id == index) {
+                $scope.itemPopupInfo = element;   
+            }
+       });
+
+       $scope.data_params.forEach(element => {
+            if (element.equipmentsMinusOne.id == index) {
+                $scope.itemPopupParams.push(element);
+            }
+        });
+    }
+
+    $scope.closeItemPopup = function(){
+        $scope.itemPopupStatus = false;
+    }
+
+    $scope.refreshItemMenuStatus();
 });

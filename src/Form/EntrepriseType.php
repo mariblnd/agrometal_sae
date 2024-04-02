@@ -19,6 +19,15 @@ class EntrepriseType extends AbstractType
             ->add('company_name')
             ->add('partner_from')
             ->add('creation_date')
+            ->add('region')
+            ->add('margin_top')
+            ->add('margin_left')
+            ->add('instagramActive')
+            ->add('instagram')
+            ->add('linkedinActive')
+            ->add('linkedin')
+            ->add('facebookActive')
+            ->add('facebook')
         ;
     }
 

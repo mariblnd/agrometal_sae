@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block head %}{% endblock %}
+{% block background %}
+	main-background-3
+{% endblock %}
+{% block preview %}
+	<div class="optimization-box-1440" style="margin-top: -125px;">
+		<div class="mainpage-welcometext-block">
+			<h1>Nos
+				<b class="yellow-text">Equipements</b>
+			</h1>
+			<h2>Découvrez les différents types d'équipements que nous fabriquons</h2>
+		</div>
+	</div>
+{% endblock %}
+{% block main %}
+	<script>
+		var data_categories = {{ equipments_bdd|json_encode|raw }};
+        var data_items = {{ equipments_min1_bdd|json_encode|raw }};
+        var data_params = {{equipments_min2_bdd|json_encode|raw}}
+	</script>
+	{% verbatim %}
+		<div ng-controller="equipementsPage">
+			<div class="contactform-generalWrap" ng-show="itemPopupStatus">
+				<div class="itempopup-block">
+					<div class="contactform-line"></div>
+					<div style="display:flex;justify-content: right; width: 100%;">
+						<button ng-click="closeItemPopup()" class="contactform-closebtn hover-opacity"><img class="hover-opacity" src="images/other/close.svg" alt="Close window"/></button>
+					</div>
+                    <div class="contactform-contentWrap">
+                        <div class="contactform-title">
+                            <h1>{{ itemPopupInfo.title }}</h1>
+                        </div>
+                        <div class="itempopup-allInfoWrap">
+                            <img src="images/categories_types/brewpub.jpeg" alt="item preview">
+                            <div class="itempopup-rightWrap">
+                                <div class="itempopup-paramswrap">
+                                    <h2>Caractéristiques</h2>
+                                    <ul>
+                                        <li ng-repeat="param in itemPopupParams">{{ param.name }}:<div class="dotted_fill_line"></div>{{ param.value }}</li>
+                                    </ul>
+                                </div>
+                                <div class="itempopup-btnWrap">
+                                    {% endverbatim %}
+                                    <a href="{{ path('contacts') }}" class="mainpage-littlelink hover-opacity">Ou contactez-nous directement en utilisant nos contacts</a>
+                                    <button ng-click="closeItemPopup()" onclick="swithContactFormStatus()" class="hover-btn">Demander une consultation</button>
+                                    {% verbatim %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="itempopup-bigDescription">
+                            <p>{{itemPopupInfo.bigDescription}}</p>
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<div ng-repeat="category in data_categories">
+				<div class="mainpage-blockwrap-padding" ng-class="{'background-gray': category.id % 2 == 0}">
+					<div class="optimization-box-1440 equipement-section-previewtype">
+						<img src="images/categories_types/{{ category.image }}" class="equipement-section-previewtype-image" alt="Category image">
+						<div class="equipement-section-previewtype-wrapcontent">
+							<ul>
+								<li>
+									<h2>{{ category.title }}</h2>
+								</li>
+								<li>
+									<h3>{{ category.descriptionShort }}</h3>
+								</li>
+								<li>
+									<p>{{ category.descriptionLong }}</p>
+								</li>
+							</ul>
+							<div class="equipement-section-previewtype-btnwrap">
+								<button ng-click="updateItemMenuStatus(category.id)" class="equipement-section-previewtype-seemorebtn hover-opacity">En savoir plus<img class="rotate-animation" src="images/other/arrow_down_white.svg" alt="Arrow" ng-class="{'rotate180': itemMenuStatus[category.id]}"></button>
+								<button onclick="swithContactFormStatus()" class="equipement-section-previewtype-contactbtn hover-btn">Consulter</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div ng-show="itemMenuStatus[category.id]" class="mainpage-blockwrap-padding background-grayblack">
+					<div class="optimization-box-1440 equipement-section-itemswrap">
+						<div ng-repeat="item in data_items" class="equipement-section-item" ng-if="item.equipments.id == category.id">
+							<img src="images/categories_types/artisanale.jpeg" alt="Equipement item">
+							<div class="equipement-section-item-bottomwrap">
+								<div class="equipement-section-item-bottomwrap-textwrap">
+									<h2>{{ item.title }}</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non laoreet tortor, non tempus sapien. Pellentesque eu mattis mauris.
+									</p>
+								</div>
+								<button ng-click="openItemPopup(item.id)" class="hover-opacity">En savoir plus</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endverbatim %}
+{% endblock %}
