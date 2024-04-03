@@ -55,7 +55,6 @@ class AgrometalController extends AbstractController
 
         $map = $repository->findOneBy(['json_file_name' => 'map_regions']);
         $mapFile = $map ? $map->getJsonFile() : null;
-        
 
 
         $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll();
@@ -69,27 +68,11 @@ class AgrometalController extends AbstractController
         $news_bdd = $entityManager->getRepository(News::class)->findAll();
         $news_number_bdd = $entityManager->getRepository(NewsNumber::class)->findAll();
 
-        return $this->render('homepage.html.twig', [
-            'mapFile' => $mapFile,
-
-            'contact_bdd' => $contact_bdd,
-            'entreprise_bdd' => $json_entreprise_bdd,
-            'equipments_bdd' => $equipments_bdd,
-            'news_bdd' => $news_bdd,
-            'news_number_bdd' => $news_number_bdd,
-            'work_contact_bdd' => $work_contact_bdd,
-        ]);
-    }
-
-
-    /*******************************************  REFERENCES  ***********************************************/
-
-    public function referencesController(EntityManagerInterface $entityManager, Request $request, MailerInterface $mailer)
-    {
-
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
+
+        //SEND MAIL
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -114,7 +97,7 @@ class AgrometalController extends AbstractController
 
             $email = (new TemplatedEmail())
                 ->from($mail)
-                ->to('i.e 58910a6e7f-cdd005+1@inbox.mailtrap.io')
+                ->to('test@test.fr')
                 ->subject($nom)
                 ->htmlTemplate('email/contact.html.twig')
                 ->context([
@@ -124,6 +107,24 @@ class AgrometalController extends AbstractController
             $mailer->send($email);
 
         }
+
+        return $this->render('homepage.html.twig', [
+            'mapFile' => $mapFile,
+
+            'contact_bdd' => $contact_bdd,
+            'entreprise_bdd' => $json_entreprise_bdd,
+            'equipments_bdd' => $equipments_bdd,
+            'news_bdd' => $news_bdd,
+            'news_number_bdd' => $news_number_bdd,
+            'work_contact_bdd' => $work_contact_bdd,
+        ]);
+    }
+
+
+    /*******************************************  REFERENCES  ***********************************************/
+
+    public function referencesController(EntityManagerInterface $entityManager, Request $request, MailerInterface $mailer)
+    {
 
         $repository = $entityManager->getRepository(AgromeetalJSON::class);
 

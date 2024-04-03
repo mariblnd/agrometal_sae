@@ -4,7 +4,7 @@
         <div style="display:flex;justify-content: right; width: 100%;">
             <button onclick="swithContactFormStatus()" class="contactform-closebtn hover-opacity"><img class="hover-opacity" src="images/other/close.svg" alt="Close window" /></button>
         </div>
-        <form class="contactform-contentWrap">
+        <form class="contactform-contentWrap" action="{{ path('home') }}">
             {% verbatim %}
             <div class="contactform-title">
                 <h1>Nous contacter</h1>
