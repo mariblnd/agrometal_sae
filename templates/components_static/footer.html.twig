@@ -7,26 +7,26 @@
                     <h3>Contacts</h3>
                 </a>
                 <ul>
-                    <li>Tél: {{ contact_bdd[0].telephone }}</li>
-                    <li>E-Mail: {{ contact_bdd[0].email }}</li>
+                    <li>Tél: {{ work_contact_bdd[0].telephone }}</li>
+                    <li>E-Mail: {{ work_contact_bdd[0].mail }}</li>
                     <li>Adress: {{ contact_bdd[0].adress }}</li>
                 </ul>
             </div>
             <div class="footer-category-line">
-                <a href="#" class="hover-opacity"><h3>Equipement</h3></a>
+                <a href="{{ path('equipment') }}" class="hover-opacity"><h3>Equipement</h3></a>
                 <ul>
                     {% for item in equipments_bdd %}
                         {% if item.preview %}
-                            <a href='#'><li class='capitaliste hover-opacity'>{{ item.title }}</li></a>
+                            <a href="{{ path('equipment') }}#{{ item.title }}"><li class='capitaliste hover-opacity'>{{ item.title }}</li></a>
                         {% endif %}
                     {% endfor %}
                 </ul>
             </div>
             <div class="footer-category-line">
-                <h3>Contacter</h3>
+                <a href="{{ path('contacts') }}" ><h3>Contacter</h3></a>
                 <ul>
-                    <li>Nouveau projet</li>
-                    <li>Expansion de la production</li>
+                    <a onclick="swithContactFormStatus()" class="hover-opacity"><li>Nouveau projet</li></a>
+                    <a onclick="swithContactFormStatus()" class="hover-opacity"><li>Expansion de la production</li></a>
                 </ul>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     {% set image_socialmedia = asset_location ~ "facebook.svg" %}
                     <a href='{{ contact_bdd[0].facebook }}'><img src='{{ asset(image_socialmedia) }}' alt='Facebook link'></a>
                 {% endif %}
-            <a href='mailto:{{ contact_bdd[0].email }}'><img width='50px' height='50px' src='{{ asset('images/social_media/mail.svg') }}' alt='Envoyer un courrier'></a>
+            <a href='mailto:{{ work_contact_bdd[0].mail }}'><img width='50px' height='50px' src='{{ asset('images/social_media/mail.svg') }}' alt='Envoyer un courrier'></a>
         </div>
     </div>
     <div class="footer-credits">

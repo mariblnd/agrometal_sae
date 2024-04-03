@@ -1,9 +1,7 @@
 {% extends 'admin_base.html.twig' %}
 
 {% block main %}
-    <h1>ContactAgrometal</h1>
-
-    <table class="table">
+    {# <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -50,11 +48,57 @@
                 <td>{{ contact_agrometal.facebook }}</td>
             </tr>
         </tbody>
-    </table>
+    </table> #}
+    <div class="adminlogin-wrap">
+		<div class="contactform-line"></div>
+		<div class="contactform-contentWrap">
+			<div class="contactform-title">
+				<h1>Entreprise contact</h1>
+				<h3>Toutes les coordonnées de l'entreprise, avec les réseaux sociaux</h3>
+			</div>
+            <div class="contactform-input">
+                <label for="admin-email">E-Mail</label>
+                <input style="max-width: none;" type="text" name="mail" id="admin-email" class="form-control" placeholder="{{ contact_agrometal.email }}" readonly>
+            </div>
+            <div class="contactform-input">
+                <label for="admin-telephone">Téléphone</label>
+                <input style="max-width: none;" type="text" name="mail" id="admin-telephone" class="form-control" placeholder="{{ contact_agrometal.telephone }}" readonly>
+            </div>
+            <div class="contactform-input">
+                <label for="admin-adresstitle">Nom de l'adresse</label>
+                <input style="max-width: none;" type="text" name="mail" id="admin-adresstitle" class="form-control" placeholder="{{ contact_agrometal.adressTitle }}" readonly>
+            </div>
+            <div class="contactform-input">
+                <label for="admin-adress">Adresse</label>
+                <input style="max-width: none;" type="text" name="mail" id="admin-adress" class="form-control" placeholder="{{ contact_agrometal.adress }}" readonly>
+            </div>
+            {% if contact_agrometal.instagramActive %}
+                <div class="contactform-input">
+                    <label for="admin-instagram">Instagram</label>
+                    <input style="max-width: none;" type="text" name="mail" id="admin-instagram" class="form-control" placeholder="{{ contact_agrometal.instagram }}" readonly>
+                </div>
+            {% endif %}
+            {% if contact_agrometal.linkedinActive %}
+                <div class="contactform-input">
+                    <label for="admin-linkedin">LinkedIn</label>
+                    <input style="max-width: none;" type="text" name="mail" id="admin-linkedin" class="form-control" placeholder="{{ contact_agrometal.linkedin }}" readonly>
+                </div>
+            {% endif %}
+            {% if contact_agrometal.facebookActive %}
+                <div class="contactform-input">
+                    <label for="admin-facebook">Facebook</label>
+                    <input style="max-width: none;" type="text" name="mail" id="admin-facebook" class="form-control" placeholder="{{ contact_agrometal.facebook }}" readonly>
+                </div>
+            {% endif %}
+            <div class="adminbase-categorywrap">
+                <a class="adminbase-categorybtn hover-btn" href="{{ path('app_contact_agrometal_edit', {'id': contact_agrometal.id}) }}">Modifier</a>
 
-    <a href="{{ path('app_contact_agrometal_index') }}">back to list</a>
-
-    <a href="{{ path('app_contact_agrometal_edit', {'id': contact_agrometal.id}) }}">edit</a>
-
-    {{ include('contact_agrometal/_delete_form.html.twig') }}
+                {% set currentUrl = app.request.getRequestUri() %}
+                {% set urlSegments = currentUrl|split('/') %}
+                {% set levelsToGoUp = 2 %}
+                {% set parentUrl = urlSegments|slice(0, -levelsToGoUp)|join('/') %}
+                <a class="adminbase-categorybtn hover-btn" href="{{ parentUrl }}">Retour</a>
+            </div>
+		</div>
+	</div>
 {% endblock %}

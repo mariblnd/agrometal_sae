@@ -1,6 +1,20 @@
-<a href="{{ path('app_logout') }}">Logout</a>
+{% extends 'admin_base.html.twig' %}
 
-<a href="adminpanel/contact">Contact</a>
-<a href="adminpanel/entreprise">Entreprises</a>
-<a href="adminpanel/equipments">Équipements</a>
-<a href="adminpanel/news">Actualités</a>
+{% block main %}
+	<div class="adminlogin-wrap">
+		<div class="contactform-line"></div>
+		<div class="contactform-contentWrap">
+			<div class="contactform-title">
+				<h1>Admin panel</h1>
+				<h3>Sélectionnez le tableau qui vous intéresse</h3>
+			</div>
+			<div class="adminbase-categorywrap">
+				<a class="adminbase-categorybtn hover-btn" href="adminpanel/contact/2">Contact</a>
+				<a class="adminbase-categorybtn hover-btn" href="adminpanel/entreprise">Entreprises</a>
+				<a class="adminbase-categorybtn hover-btn" href="adminpanel/equipments">Équipements</a>
+				<a class="adminbase-categorybtn hover-btn" href="adminpanel/news">Actualités</a>
+			</div>
+			<a class="adminbase-logout hover-opacity" href="{{ path('app_logout') }}">Logout</a>
+		</div>
+	</div>
+{% endblock %}

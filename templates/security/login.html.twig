@@ -1,5 +1,7 @@
 {% extends 'admin_base.html.twig' %}
-
+{% block head %}
+<script src="{{ asset('JS/admin_controller.js') }}"></script>
+{% endblock %}
 
 {% block main %}
     <form class="adminlogin-wrap" method="post" ng-controller="adminLogin" action="{{ path('app_login') }}">

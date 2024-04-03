@@ -17,6 +17,7 @@
     --text-whitedark: #D9D9D9;
     --input-background: #F2F2F2;
     --redTEXT: #c62828;
+    --exitBTN: #c77f7f;
     --alertBackground: #d4b3b3;
 }
 
@@ -124,7 +125,7 @@ header{
     align-items: center;
 }
 
-header a{
+.header_link{
     font-weight: 400;
     text-decoration: none;
     color: white;
@@ -187,7 +188,7 @@ header button{
     color: white;
 }
 
-.mainpage-welcometext-block button{
+.mainpage-welcometext-block a{
     height: 60px;
     border: none;
     border-radius: 10px;
@@ -195,6 +196,9 @@ header button{
     font-weight: 500;
     color: white;
     background-color: var(--darkblue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* NEWS BLOCK */
@@ -966,6 +970,60 @@ footer{
 
 }
 
+.adminbase-categorywrap{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.adminbase-categorybtn{
+    font-size: 1.125em;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    background-color: var(--darkblue);
+    padding: 13px 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+.adminbase-logout{
+    font-size: 1.125em;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    background-color: var(--redTEXT);
+    padding: 13px 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+.adminform-input{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.adminform-input label{
+    font-size: 1.5em;
+    font-weight: 500;
+    color: var(--mediumtext-black);
+}
+
+.adminform-input input{
+    padding: 7px 10px;
+    border: none;
+    font-size: 1.125em;
+    border-radius: 10px;
+    background-color: var(--input-background);
+    color: var(--littletext-black);
+}
+
+.adminform-doublewrap{
+    display: flex; 
+    gap: 25px; 
+    flex-wrap:wrap;
+}
 /* EQUIPEMENT */
 
 .equipement-section-previewtype{
@@ -1065,6 +1123,8 @@ footer{
     gap: 25px;
     flex: 1;
     min-width: 500px;
+    min-height: 445px;
+    flex-wrap: wrap;
 }
 
 .equipement-section-item img{
@@ -1077,7 +1137,9 @@ footer{
 .equipement-section-item-bottomwrap{
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: 15px;
+    justify-content: space-between;
 }
 
 .equipement-section-item-bottomwrap button{
