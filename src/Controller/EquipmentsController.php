@@ -30,6 +30,23 @@ class EquipmentsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+            $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+            try {
+            $imageFile->move(
+            $this->getParameter('images_directory_equipments'),
+            $newFilename
+            );
+            } catch (FileException $e) {
+            }
+
+            $equipment->setImage($newFilename);
+            }
+            
             $entityManager->persist($equipment);
             $entityManager->flush();
 

@@ -30,6 +30,24 @@ class EntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFile = $form->get('file')->getData();
+
+            if ($imageFile) {
+            $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+            try {
+            $imageFile->move(
+            $this->getParameter('images_directory'),
+            $newFilename
+            );
+            } catch (FileException $e) {
+            }
+
+            $entreprise->setLogo($newFilename);
+            $entreprise->setFile($newFilename);
+            }
+            
             $entityManager->persist($entreprise);
             $entityManager->flush();
 
