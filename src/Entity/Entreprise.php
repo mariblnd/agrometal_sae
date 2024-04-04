@@ -17,9 +17,6 @@ class Entreprise
     private ?string $logo = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $file = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
@@ -82,17 +79,6 @@ class Entreprise
         return $this;
     }
 
-    public function getFile(): ?string
-    {
-        return $this->file;
-    }
-
-    public function setFile(string $file): static
-    {
-        $this->file = $file;
-
-        return $this;
-    }
 
     public function getTitle(): ?string
     {

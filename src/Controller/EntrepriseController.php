@@ -31,7 +31,7 @@ class EntrepriseController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $imageFile = $form->get('file')->getData();
+            $imageFile = $form->get('logo')->getData();
 
             if ($imageFile) {
             $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -45,7 +45,6 @@ class EntrepriseController extends AbstractController
             }
 
             $entreprise->setLogo($newFilename);
-            $entreprise->setFile($newFilename);
             }
             
             $entityManager->persist($entreprise);
@@ -75,6 +74,21 @@ class EntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('logo')->getData();
+
+            if ($imageFile) {
+            $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+            try {
+            $imageFile->move(
+            $this->getParameter('images_directory'),
+            $newFilename
+            );
+            } catch (FileException $e) {
+            }
+
+            $entreprise->setLogo($newFilename);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);

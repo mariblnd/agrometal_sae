@@ -15,7 +15,7 @@ class EntrepriseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('file',FileType::class, array('mapped' => false))
+            ->add('logo',FileType::class, array('mapped' => false))
             ->add('title')
             ->add('website')
             ->add('description')
