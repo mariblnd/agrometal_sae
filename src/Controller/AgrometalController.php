@@ -185,7 +185,8 @@ class AgrometalController extends AbstractController
 
         return $this->render('equipments.html.twig', [
             'contactsFile' => $contactsFile,
-            'equipments_bdd' => $json_equipments_bdd,
+            'json_equipments_bdd' => $json_equipments_bdd,
+            'equipments_bdd' => $equipments_bdd,
             'equipments_min1_bdd' => $json_equipements_min1_bdd,
             'equipments_min2_bdd' => $json_equipements_min2_bdd,
             'contact_bdd' => $contact_bdd,

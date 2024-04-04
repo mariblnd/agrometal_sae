@@ -8,10 +8,10 @@
             {% for item in equipments_bdd %}
                 {% if item.preview %}
                     {% set asset_location = 'images/categories_types/' ~ item.image %}
-                    <a class='mainpage-equipement-types-elem hover-opacity' href='#'><img src='{{ asset(asset_location) }}'alt='{{ item.title }}'><p>{{ item.title }}</p></a>
+                    <a class='mainpage-equipement-types-elem hover-opacity' href="{{ path('equipment') }}#{{item.title}}"><img src='{{ asset(asset_location) }}'alt='{{ item.title }}'><p>{{ item.title }}</p></a>
                 {% endif %}
             {% endfor %}
         </div>
-        <a class="mainpage-littlelink hover-opacity" href="#">Plus d'information dans notre catalogue</a>
+        <a class="mainpage-littlelink hover-opacity" href="{{ path('equipment') }}">Plus d'information dans notre catalogue</a>
     </div>
 </div>

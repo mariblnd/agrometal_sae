@@ -23,12 +23,12 @@ main-background-2
                     <h2>Tous les moyens possibles pour nous contacter, ou remplir le <a onclick="swithContactFormStatus()" class="hover-opacity">formulaire</a></h2>
                 </div>
                 <div class="contactpage-infobox">
-                    <h3>{{ contactsFile.adress_title }}</h1>
-                    <p>{{ contactsFile.adress }}</p>
+                    <h3>{{ contact_bdd[0].adressTitle }}</h1>
+                    <p>{{ contact_bdd[0].adress }}</p>
                 </div>
                 <div class="contactpage-infobox">
                     <h3>Contacts</h1>
-                    <p>Tél: {{ contactsFile.telephone }}<br>E-Mail:  {{ contactsFile.email }}</p>
+                    <p>Tél: {{ contact_bdd[0].telephone }}<br>E-Mail:  {{ contact_bdd[0].email }}</p>
                 </div>
             </div>
             <div id="map"></div>
@@ -49,12 +49,12 @@ main-background-2
             <div class="contactpage-consultant-infowrap">
                 <div class="contactpage-infobox">
                     <h1>Consultant</h1>
-                    <h3>{{ contactsFile.work_contact.name}}</h3>
-                    <p>{{ contactsFile.work_contact.title }}</p>
+                    <h3>{{ work_contact_bdd[0].name}}</h3>
+                    <p>{{ work_contact_bdd[0].title }}</p>
                 </div>
                 <div class="contactpage-infobox">
                     <h3>Contacts</h1>
-                    <p>Tél/WhatsApp: {{ contactsFile.work_contact.telephone }}<br>E-Mail:  {{ contactsFile.work_contact.mail }}</p>
+                    <p>Tél/WhatsApp: {{ work_contact_bdd[0].telephone }}<br>E-Mail:  {{ work_contact_bdd[0].mail }}</p>
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@
 {% endblock %}
 {% block main %}
 	<script>
-		var data_categories = {{ equipments_bdd|json_encode|raw }};
+		var data_categories = {{ json_equipments_bdd|json_encode|raw }};
         var data_items = {{ equipments_min1_bdd|json_encode|raw }};
         var data_params = {{equipments_min2_bdd|json_encode|raw}}
 	</script>
@@ -32,7 +32,7 @@
                             <h1>{{ itemPopupInfo.title }}</h1>
                         </div>
                         <div class="itempopup-allInfoWrap">
-                            <img src="images/categories_types/brewpub.jpeg" alt="item preview">
+                            <img src="images/{{ itemPopupInfo.image }}" alt="item preview">
                             <div class="itempopup-rightWrap">
                                 <div class="itempopup-paramswrap">
                                     <h2>Caractéristiques</h2>
@@ -54,7 +54,7 @@
                     </div>
 				</div>
 			</div>
-			<div ng-repeat="category in data_categories">
+			<div ng-repeat="category in data_categories" id="{{ category.title }}">
 				<div class="mainpage-blockwrap-padding" ng-class="{'background-gray': category.id % 2 == 0}">
 					<div class="optimization-box-1440 equipement-section-previewtype">
 						<img src="images/categories_types/{{ category.image }}" class="equipement-section-previewtype-image" alt="Category image">
@@ -80,12 +80,11 @@
 				<div ng-show="itemMenuStatus[category.id]" class="mainpage-blockwrap-padding background-grayblack">
 					<div class="optimization-box-1440 equipement-section-itemswrap">
 						<div ng-repeat="item in data_items" class="equipement-section-item" ng-if="item.equipments.id == category.id">
-							<img src="images/categories_types/artisanale.jpeg" alt="Equipement item">
+							<img src="images/{{ item.image }}" alt="Equipement item">
 							<div class="equipement-section-item-bottomwrap">
 								<div class="equipement-section-item-bottomwrap-textwrap">
 									<h2>{{ item.title }}</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non laoreet tortor, non tempus sapien. Pellentesque eu mattis mauris.
-									</p>
+									<p>{{ item.smallDescription }}</p>
 								</div>
 								<button ng-click="openItemPopup(item.id)" class="hover-opacity">En savoir plus</button>
 							</div>

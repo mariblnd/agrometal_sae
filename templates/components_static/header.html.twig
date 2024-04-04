@@ -1,8 +1,10 @@
 <header>
-    <img src="{{ asset('images/brand/logo.png') }}" alt="Logo">
+    <a href="{{ path('home') }}" style="padding: 0; margin: 0; z-index: 99;">
+        <img src="{{ asset('images/brand/logo.png') }}" alt="Logo">
+    </a>
     <div>
-        <a href="{{ path('equipment') }}" class="hover-opacity">Equipement</a>
-        <a href="{{ path('contacts') }}" class="hover-opacity">Contacts</a>
+        <a href="{{ path('equipment') }}" class="header_link hover-opacity">Equipement</a>
+        <a href="{{ path('contacts') }}" class="header_link hover-opacity">Contacts</a>
         <button onclick="swithContactFormStatus()" class="hover-btn">Contacter</button>
     </div>
 </header>

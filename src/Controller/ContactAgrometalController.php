@@ -59,7 +59,7 @@ class ContactAgrometalController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_contact_agrometal_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_contact_agrometal_show', ['id' => 2], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('contact_agrometal/edit.html.twig', [
