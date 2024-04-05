@@ -45,7 +45,7 @@ class AgrometalController extends AbstractController
 {
     /*******************************************   HOMEPAGE    ***********************************************/
 
-    public function homepageController(EntityManagerInterface $entityManager, Request $request)
+    public function homepageController(EntityManagerInterface $entityManager, Request $request, MailerInterface $mailer)
     {
         $encoders = [new XmlEncoder(), new JsonEncoder()];     //
         $normalizers = [new ObjectNormalizer()];               //  Transfer to JSON
@@ -110,6 +110,7 @@ class AgrometalController extends AbstractController
 
         return $this->render('homepage.html.twig', [
             'mapFile' => $mapFile,
+            'form' => $form->createView(),
 
             'contact_bdd' => $contact_bdd,
             'entreprise_bdd' => $json_entreprise_bdd,
@@ -143,6 +144,44 @@ class AgrometalController extends AbstractController
 
         /*$point_map_bdd = $entityManager->getRepository(PointCarte::class)->findAll();
         $json_point_map_bdd = $serializer->serialize($point_map_bdd, 'json');*/
+
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        //SEND MAIL
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $nom = $form->get('nom')->getData();
+            $message = $form->get('message')->getData();
+            $mail = $form->get('mail')->getData();
+            $tel = $form->get('tel')->getData();
+            $brasserieExist = $form->get('brasserie_exist')->getData();
+            $brasserieName = $form->get('brasserie_name')->getData();
+            $project = $form->get('project')->getData();
+
+            $contact->setNom($nom);
+            $contact->setMessage($message);
+            $contact->setMail($mail);
+            $contact->setTel($tel);
+            $contact->setBrasserieExist($brasserieExist);
+            $contact->setBrasserieName($brasserieName);
+            $contact->setProject($project);
+
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            $email = (new TemplatedEmail())
+                ->from($mail)
+                ->to('test@test.fr')
+                ->subject($nom)
+                ->htmlTemplate('email/contact.html.twig')
+                ->context([
+                    'contact' => $contact
+                ]);
+
+            $mailer->send($email);}
 
         return $this->render('references.html.twig', [
             'contactsFile' => $contactsFile,
