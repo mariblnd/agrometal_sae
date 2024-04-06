@@ -4,54 +4,71 @@
         <div style="display:flex;justify-content: right; width: 100%;">
             <button onclick="swithContactFormStatus()" class="contactform-closebtn hover-opacity"><img class="hover-opacity" src="images/other/close.svg" alt="Close window" /></button>
         </div>
-        <form class="contactform-contentWrap" action="{{ path('home') }}">
-            {% verbatim %}
+        {# {{ form_start(form, {'form_action': path('home')}) }} #}
+        <form method="post" action="{{ path('home') }}">
+        <div class="contactform-contentWrap">
             <div class="contactform-title">
                 <h1>Nous contacter</h1>
                 <h3>Que vous soyez déjà notre client ou que vous souhaitiez simplement commencer à travailler avec nous, nous vous répondrons dans les plus brefs délais.</h3>
             </div>
             <div class="contactform-input">
-                <label for="name">Nom*</label>
-                <input type="text" id="name" name="name" placeholder="Eugène Delacroix" required>
+                {# <label for="name">Nom*</label> 
+                <input type="text" id="name" name="name" placeholder="Eugène Delacroix" required> #}
+                {{ form_label(form.nom, 'Nom*') }}
+                {{ form_widget(form.nom, {'attr': {'placeholder': 'Eugène Delacroix'}}) }}
             </div>
             <div class="contactform-input">
-                <label>Message</label>
-                <textarea ng-model="messageText" ng-change="messageTextCount()" rows="10" placeholder="Bonjour, je voudrais préciser..." maxlength="750"></textarea>
-                <p class="contactform-countletters" ng-style="{'color': messageTextRED ? 'var(--redTEXT)' : 'var(--littletext-black)'}">{{ messageTextNumber }}/750</p>
+                {# <label>Message</label>
+                <textarea ng-model="messageText" ng-change="messageTextCount()" rows="10" placeholder="Bonjour, je voudrais préciser..." maxlength="750"></textarea> #}
+                {{ form_label(form.message, 'Message') }}
+                {{ form_widget(form.message, {'attr': {'ng-model': 'messageText','ng-change': 'messageTextCount()','rows': '10','placeholder': 'Bonjour, je voudrais préciser...','maxlength': '750'}}) }}
+                {% verbatim %}<p class="contactform-countletters" ng-style="{'color': messageTextRED ? 'var(--redTEXT)' : 'var(--littletext-black)'}">{{ messageTextNumber }}/750</p>{% endverbatim %}
             </div>
             <div class="contactform-inputRowWrap">
                 <div class="contactform-input">
-                    <label>E-Mail*</label>
-                    <input type="email" placeholder="example@gmail.com" required>
+                    {# <label>E-Mail*</label>
+                    <input type="email" placeholder="example@gmail.com" required> #}
+                    {{ form_label(form.mail, 'E-Mail*') }}
+                    {{ form_widget(form.mail, {'attr': {'placeholder': 'example@gmail.com'}}) }}
                 </div>
                 <div class="contactform-input">
-                    <label>Téléphone</label>
-                    <input type="tel" placeholder="07 00 00 99 99">
+                    {# <label>Téléphone</label>
+                    <input type="tel" placeholder="07 00 00 99 99"> #}
+                    {{ form_label(form.tel, 'Téléphone') }}
+                    {{ form_widget(form.tel, {'attr': {'placeholder': '07 00 00 99 99'}}) }}
                 </div>
             </div>
             <div class="contactform-input">
-                <label>Vous souhaitez agrandir une brasserie déjà existante?</label>
+                {# <label>Vous souhaitez agrandir une brasserie déjà existante?</label> #}
+                {{ form_label(form.brasserie_exist, 'Vous souhaitez agrandir une brasserie déjà existante?') }}
                 <div class="contactform-checkbox">
-                    <input type="checkbox" ng-model="additionalInfo">
+                    {# <input type="checkbox" ng-model="additionalInfo"> #}
+                    {{ form_widget(form.brasserie_exist, {'attr': {'ng-model': 'additionalInfo'}}) }}
                     <p>Oui</p>
                 </div>
             </div>
             <div class="contactform-additionalWrap" ng-show="additionalInfo">
                 <div class="contactform-input">
-                    <label>Nom de la brasserie</label>
-                    <input type="text" placeholder="Brasserie Example">
+                    {# <label>Nom de la brasserie</label>
+                    <input type="text" placeholder="Brasserie Example"> #}
+                    {{ form_label(form.brasserie_name, 'Nom de la Brasserie') }}
+                    {{ form_widget(form.brasserie_name, {'attr': {'placeholder': 'Brasserie Example'}}) }}
                 </div>
                 <div class="contactform-input">
-                    <label>Qu'est-ce que vous voulez réaliser?</label>
-                    <textarea ng-model="projectToCreateText" ng-change="projectToCreateTextCount()" maxlength="750" rows="10" placeholder="Amélioration de la filtration du houblon dans la brasserie..."></textarea>
-                    <p class="contactform-countletters" ng-style="{'color': projectToCreateTextRED ? 'var(--redTEXT)' : 'var(--littletext-black)'}">{{ projectToCreateTextNumber }}/750</p>
+                    {# <label>Qu'est-ce que vous voulez réaliser?</label>
+                    <textarea ng-model="projectToCreateText" ng-change="projectToCreateTextCount()" maxlength="750" rows="10" placeholder="Amélioration de la filtration du houblon dans la brasserie..."></textarea> #}
+                    {{ form_label(form.project, 'Quʼest-ce que vous voulez réaliser?') }}
+                    {{ form_widget(form.project, {'attr': {'ng-model': 'projectToCreateText', 'ng-change': 'projectToCreateTextCount()','maxlength': '750', 'rows':'10', 'placeholder': 'Amélioration de la filtration du houblon dans la brasserie...'}}) }}
+                    {% verbatim %}<p class="contactform-countletters" ng-style="{'color': projectToCreateTextRED ? 'var(--redTEXT)' : 'var(--littletext-black)'}">{{ projectToCreateTextNumber }}/750</p>{% endverbatim %}
                 </div>
             </div>
-            {% endverbatim %}
             <div class="contactform-submit">
-                <button class="hover-btn" type="submit">Envoyer votre message</button>
-                <a class="hover-opacity" href="{{ path('contacts') }}">Sinon, vous pouvez nous contacter directement en utilisant nos contacts</a>
+                {# <button class="hover-btn" type="submit">Envoyer votre message</button> #}
+                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                {% verbatim %}<a class="hover-opacity" href="{{ path('contacts') }}">Sinon, vous pouvez nous contacter directement en utilisant nos contacts</a>{% endverbatim %}
             </div>
+        </div>
         </form>
+        {# {{ form_end(form) }} #}
     </div>
 </div>

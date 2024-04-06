@@ -198,7 +198,7 @@ class AgrometalController extends AbstractController
 
     /*******************************************  EQUIPEMENTS  ***********************************************/
 
-    public function equipementsController(EntityManagerInterface $entityManager)
+    public function equipementsController(EntityManagerInterface $entityManager, Request $request, MailerInterface $mailer)
     {
         $encoders = [new XmlEncoder(), new JsonEncoder()];     //
         $normalizers = [new ObjectNormalizer()];               //  Transfer to JSON
@@ -222,7 +222,50 @@ class AgrometalController extends AbstractController
 
         $contact_bdd = $entityManager->getRepository(ContactAgrometal::class)->findAll();
 
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        //SEND MAIL
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $nom = $form->get('nom')->getData();
+            $message = $form->get('message')->getData();
+            $mail = $form->get('mail')->getData();
+            $tel = $form->get('tel')->getData();
+            $brasserieExist = $form->get('brasserie_exist')->getData();
+            $brasserieName = $form->get('brasserie_name')->getData();
+            $project = $form->get('project')->getData();
+
+            $contact->setNom($nom);
+            $contact->setMessage($message);
+            $contact->setMail($mail);
+            $contact->setTel($tel);
+            $contact->setBrasserieExist($brasserieExist);
+            $contact->setBrasserieName($brasserieName);
+            $contact->setProject($project);
+
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            $email = (new TemplatedEmail())
+                ->from($mail)
+                ->to('test@test.fr')
+                ->subject($nom)
+                ->htmlTemplate('email/contact.html.twig')
+                ->context([
+                    'contact' => $contact
+                ]);
+
+            $mailer->send($email);
+
+        }
+
         return $this->render('equipments.html.twig', [
+            'form' => $form->createView(),
+
+
             'contactsFile' => $contactsFile,
             'json_equipments_bdd' => $json_equipments_bdd,
             'equipments_bdd' => $equipments_bdd,
@@ -289,7 +332,7 @@ class AgrometalController extends AbstractController
 
     /*************************************** CONTACTS **************************************************/
 
-    public function contactsController(EntityManagerInterface $entityManager)
+    public function contactsController(EntityManagerInterface $entityManager, Request $request, MailerInterface $mailer)
     {
         $repository = $entityManager->getRepository(AgromeetalJSON::class);
 
@@ -319,9 +362,52 @@ class AgrometalController extends AbstractController
 
         $regions_bdd = $entityManager->getRepository(MapRegions::class)->findAll();
 
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        //SEND MAIL
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $nom = $form->get('nom')->getData();
+            $message = $form->get('message')->getData();
+            $mail = $form->get('mail')->getData();
+            $tel = $form->get('tel')->getData();
+            $brasserieExist = $form->get('brasserie_exist')->getData();
+            $brasserieName = $form->get('brasserie_name')->getData();
+            $project = $form->get('project')->getData();
+
+            $contact->setNom($nom);
+            $contact->setMessage($message);
+            $contact->setMail($mail);
+            $contact->setTel($tel);
+            $contact->setBrasserieExist($brasserieExist);
+            $contact->setBrasserieName($brasserieName);
+            $contact->setProject($project);
+
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            $email = (new TemplatedEmail())
+                ->from($mail)
+                ->to('test@test.fr')
+                ->subject($nom)
+                ->htmlTemplate('email/contact.html.twig')
+                ->context([
+                    'contact' => $contact
+                ]);
+
+            $mailer->send($email);
+
+        }
+
 
 
         return $this->render('contacts.html.twig', [
+
+            'form' => $form->createView(),
+
             'contactsFile' => $contactsFile,
             'equipementsFile' => $equipementsFile,
             'mapFile' => $mapFile,

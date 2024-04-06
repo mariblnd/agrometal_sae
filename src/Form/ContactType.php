@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ContactType extends AbstractType
 {
@@ -18,7 +19,7 @@ class ContactType extends AbstractType
             ->add('nom', TextType::class, [
                 'label' => 'Nom et Prénom', 
             ])
-            ->add('message', TextType::class, [
+            ->add('message', TextareaType::class, [
                 'label' => 'Message', 
             ])
             ->add('mail', TextType::class, [
@@ -35,7 +36,7 @@ class ContactType extends AbstractType
                 'required' => false,
                 'label' => 'Nom de la Brasserie'
             ])
-            ->add('project',TextType::class, [
+            ->add('project',TextareaType::class, [
                 'required' => false,
                 'label' => 'Que voulez-vous réaliser ?'
             ])

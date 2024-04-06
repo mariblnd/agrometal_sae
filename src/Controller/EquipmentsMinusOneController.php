@@ -30,11 +30,29 @@ class EquipmentsMinusOneController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+            $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+            try {
+            $imageFile->move(
+            $this->getParameter('images_directory_equipments'),
+            $newFilename
+            );
+            } catch (FileException $e) {
+            }
+
+            $equipmentsMinusOne->setImage($newFilename);
+            }
+            
             $entityManager->persist($equipmentsMinusOne);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_equipments_minus_one_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_equipments_index', [], Response::HTTP_SEE_OTHER);
         }
+
 
         return $this->render('equipments_minus_one/new.html.twig', [
             'equipments_minus_one' => $equipmentsMinusOne,
@@ -57,9 +75,28 @@ class EquipmentsMinusOneController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            if ($form->isSubmitted() && $form->isValid()) {
 
-            return $this->redirectToRoute('app_equipments_minus_one_index', [], Response::HTTP_SEE_OTHER);
+                $imageFile = $form->get('image')->getData();
+    
+                if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                try {
+                $imageFile->move(
+                $this->getParameter('images_directory_equipments'),
+                $newFilename
+                );
+                } catch (FileException $e) {
+                }
+    
+                $equipmentsMinusOne->setImage($newFilename);
+                }
+                
+                $entityManager->flush();
+    
+                return $this->redirectToRoute('app_equipments_index', [], Response::HTTP_SEE_OTHER);
+            }
         }
 
         return $this->render('equipments_minus_one/edit.html.twig', [

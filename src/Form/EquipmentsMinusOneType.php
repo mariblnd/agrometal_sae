@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class EquipmentsMinusOneType extends AbstractType
 {
@@ -17,7 +18,7 @@ class EquipmentsMinusOneType extends AbstractType
             ->add('title')
             ->add('small_description')
             ->add('big_description')
-            ->add('image')
+            ->add('image',FileType::class, array('mapped' => false))
             ->add('equipments', EntityType::class, [
                 'class' => Equipments::class,
                 'choice_label' => 'id',
