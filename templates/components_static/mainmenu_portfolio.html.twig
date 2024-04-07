@@ -17,36 +17,36 @@
                 </div>
                 <div class="mainpage-references-companywrap">
                     <div class="mainpage-references-namewrap">
-                        <img ng-src="{{ image_dir_logo }}{{ data[selected_client].logo }}" alt="Client logo">
+                        <img ng-src="{{ image_dir_logo }}{{ selected_client.logo }}" alt="Client logo">
                         <div class="mainpage-references-name">
-                            <h3>{{ data[selected_client].companyName }}</h3>
-                            <p>{{ data[selected_client].description }}</p>
+                            <h3>{{ selected_client.companyName }}</h3>
+                            <p>{{ selected_client.description }}</p>
                         </div>
                     </div>
                     <ul class="mainpage-references-infowrap">
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Date de création</h4></li>
-                            <li><p>{{ data[selected_client].creationDate }}</p></li>
+                            <li><p>{{ selected_client.creationDate }}</p></li>
                         </ul>
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Nos partenaires depuis</h4></li>
-                            <li><p>{{ data[selected_client].partnerFrom }}</p></li>
+                            <li><p>{{ selected_client.partnerFrom }}</p></li>
                         </ul>
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Site officiel</h4></li>
-                            <li><p><a class="hover-opacity" href="https://{{ data[selected_client].website }}/">{{ data[selected_client].website }}</a></p></li>
+                            <li><p><a class="hover-opacity" href="https://{{ selected_client.website }}/">{{ selected_client.website }}</a></p></li>
                         </ul>
                         <ul class="mainpage-references-infoblock">
                             <li><h4>Réseaux sociaux</h4></li>
                             <ul class="mainpage-references-socialmedia">
-                                <li ng-if="data[selected_client].instagramActive">
-                                    <a href="{{ data[selected_client].instagram }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}instagram_cont.svg" alt="Instagram link" width="50px" height="50px"></a>
+                                <li ng-if="selected_client.instagramActive">
+                                    <a href="{{ selected_client.instagram }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}instagram_cont.svg" alt="Instagram link" width="50px" height="50px"></a>
                                 </li>
-                                <li ng-if="data[selected_client].linkedinActive">
-                                    <a href="{{ data[selected_client].linkedin }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}linkedin_cont.svg" alt="LinkedIn link" width="50px" height="50px"></a>
+                                <li ng-if="selected_client.linkedinActive">
+                                    <a href="{{ selected_client.linkedin }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}linkedin_cont.svg" alt="LinkedIn link" width="50px" height="50px"></a>
                                 </li>
-                                <li ng-if="data[selected_client].facebookActive">
-                                    <a href="{{ data[selected_client].facebook }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}facebook_cont.svg" alt="Facebook link" width="50px" height="50px"></a>
+                                <li ng-if="selected_client.facebookActive">
+                                    <a href="{{ selected_client.facebook }}"><img class="hover-opacity" ng-src="{{ image_dir_socialmedia }}facebook_cont.svg" alt="Facebook link" width="50px" height="50px"></a>
                                 </li>
                             </ul>
                         </ul>

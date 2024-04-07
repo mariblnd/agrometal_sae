@@ -35,10 +35,10 @@ myApp.controller('contactForm', function($scope) {
 myApp.controller('nosReferences', function($scope,$timeout) {
     $scope.image_dir_logo = 'images/references/clients_logos/';
     $scope.image_dir_socialmedia = 'images/social_media/';
-    $scope.selected_client = 0;
     $scope.socialmedia_color = '';
 
     $scope.data = JSON.parse(data);
+    $scope.selected_client = $scope.data[0];
     console.log($scope.data);
 
     $scope.data_regions = data_regions;
@@ -53,7 +53,7 @@ myApp.controller('nosReferences', function($scope,$timeout) {
     }
 
     $scope.getMapBtnActive = function(itemId) {
-        if (itemId === $scope.selected_client) {
+        if (itemId === $scope.selected_client.id) {
             return {
                 'background-color': 'white'
             };
@@ -70,9 +70,9 @@ myApp.controller('nosReferences', function($scope,$timeout) {
             if (svgDoc) {
                 angular.forEach($scope.data_regions.regions, function(value) {
                     var svgElement = svgDoc.getElementById($scope.map_id_cache + value.title);
-                    console.log($scope.data[$scope.selected_client].region);
+                    console.log($scope.selected_client.region);
 
-                    if (value.title === $scope.data[$scope.selected_client].region) {
+                    if (value.title === $scope.selected_client.region) {
                         svgElement.style.fill = '#0059B5';
                     } else {
                         svgElement.style.fill = '#004388';
@@ -82,10 +82,14 @@ myApp.controller('nosReferences', function($scope,$timeout) {
         }
     }
     $scope.changeSelectedClient = function(itemId, region){
-        if(itemId === $scope.selected_client){
+        if(itemId === $scope.selected_client.id){
             return {};
         } else{
-            $scope.selected_client = itemId;
+            angular.forEach($scope.data, function(value) {
+                if (value.id === itemId) {
+                    $scope.selected_client = value;
+                }
+            });
         }
         var svgObject = document.getElementById('references-map');
         if (svgObject) {
